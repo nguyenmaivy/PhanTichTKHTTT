@@ -15,7 +15,7 @@ function init(index){
         })
     })
 }
-init(1);
+init(2);
 
 $("#banhang").click(function(){
     if(!$(this).hasClass("disabled")){
@@ -67,10 +67,15 @@ function qlTaiKhoan(){
         $(".model-item.active").removeClass("active")
         if(e.target.innerText=="Thêm tài khoản"){
             $(this).addClass("active")
-            $(".model-content").load("./pages/module/themtk.php")
-        }else{
+            $(".model-content").load("./pages/themtk.php")
+        }
+        else if(e.target.innerText=="Sửa tài khoản"){
             $(this).addClass("active")
-            // $(".model-content").load("./pages/module/suatk.php")
+            $(".model-content").load("./pages/timtk.php?status=1")
+        }
+        else if(e.target.innerText=="Xóa tài khoản"){
+            $(this).addClass("active")
+            $(".model-content").load("./pages/timtk.php?status=2")
         }
     }) 
 }

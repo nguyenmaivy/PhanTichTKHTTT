@@ -13,12 +13,7 @@
         </div> -->
         <div class="modal_content-input-box form-group">
             <label for="password-register">Mật khẩu</label>
-            <input type="password" placeholder="Nhập mật khẩu" id="password-register" name="password_register">
-            <span class="form-message"></span>
-        </div>
-        <div class="modal_content-input-box form-group">
-            <label for="confirm-password">Nhập lại mật khẩu</label>
-            <input type="password" placeholder="Nhập mật khẩu" id="confirm_password">
+            <input type="" placeholder="Nhập mật khẩu" id="password-register" name="password_register">
             <span class="form-message"></span>
         </div>
         <div class="modal_content-input-box form-group">
@@ -34,3 +29,32 @@
         </div>
 </form>
 </div>
+<script>
+    Validator({
+        form: "#form-sua",
+        rules: [
+            Validator.isRequired("#user1_register"),
+            Validator.isSDT("#user1_register"),
+
+            Validator.isRequired("#password_register"),
+            Validator.isMaxLength("#password_register",20),
+
+            Validator.isRequired("#username-register"),
+            Validator.isMaxLength("#username-register",15),
+        ],
+        errorElement: ".form-message",
+        onSubmit:function(value){
+            console.log(value)
+        }
+    })
+    const inputE=document.querySelector('form').querySelectorAll("[name]")
+    const tmp={
+        user1_register:ttTK.SDT,
+        password_register:ttTK.MatKhau,
+        username_register:ttTK.UserName
+    }
+    console.log(inputE[0])
+    Array.from(inputE).forEach((input)=>{
+        input.value=tmp[input.name];
+    })
+</script>

@@ -57,9 +57,12 @@
                     <ul class="list-group list-group-horizontal menu-container">
                         <li class="list-group-item model-item">Thêm tài khoản</li>
                         <li class="list-group-item model-item">Sửa tài khoản</li>
+                        <li class="list-group-item model-item">Xóa tài khoản</li>
                     </ul>
                     </div>
-                    <div class="model-content"></div>
+                    <div class="model-content">
+
+                    </div>
                 </div>
                 <!-- <div class="content-doanhthu">
                     <p>báo cáo doanh thu</p>
@@ -124,7 +127,7 @@
     <?php 
         include './pages/footer.php';
     ?>
+    <script src="./js/vadidation.js"></script>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/adpanel.js"></script>
-</body>
 </html>

@@ -109,7 +109,6 @@ function Validator(option){
                         }
                         return value
                     },{})
-                    this.reset();
                     option.onSubmit(valueForm)
                 }
                 // Submit mặc định của gg

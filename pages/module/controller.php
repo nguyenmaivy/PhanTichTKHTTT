@@ -2,7 +2,7 @@
 class controller{
     private $conn;
     function constructor() {
-        $this->conn=new mysqli("127.0.0.1","root","","xxx");
+        $this->conn=new mysqli("127.0.0.1","root","","mypham");
         if($this->conn->connect_error){
             die("connect failed");
         }
