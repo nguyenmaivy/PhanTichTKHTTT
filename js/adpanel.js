@@ -5,50 +5,36 @@ function cook() {
 function init(index){
     var name=["","Quản lý Kho","Quản lý Bán Hàng"];
     name=[[],["Quản lý Kho","Thống kê doanh thu"],["Quản lý Bán Hàng","Thống kê doanh thu"]]
-    // $(".model-banhang").hide();
-    // $(".model-kho").hide()
-
     $(".container.disabled").removeClass("disabled");
     $(".container").each(function(){
         name[index].forEach((i)=>{
-            if($(this).text().trim()==i){
-                console.log(i)
-                $(this).addClass("disabled");
+            if($(this).find(".item-container").text().trim()==i){
+                console.log($(this).find(".item-container").text().trim())
+                $(this).find(".item-container").addClass("disabled");
             }
         })
     })
 }
-init(0);
-$(".container").click(function(e) {
-    if (!$(this).hasClass("disabled")) {
-        $(".model-right.active").removeClass("active")
-        if (e.target.innerText == "Quản lý Kho") {
-            //show model quản lý kho
-            // $(".model-banhang").hide();
-            // $(".model-kho").show();
-            $(".model-kho").addClass("active")
-        }
-        if (e.target.innerText == "Quản lý Bán Hàng") {
-            //show model quản lý bán hàng
-            // $(".model-banhang").show();
-            // $(".model-kho").hide();
-            $(".model-banhang").addClass("active")
-        }
-        if (e.target.innerText == "Thống kê doanh thu") {
-            //show model quản lý bán hàng
-            // $(".model-banhang").show();
-            // $(".model-kho").hide();
-            $(".model-baocao").addClass("active")
-        }
-        $(".container.active").removeClass("active");
-        $(this).addClass("active");
+init(1);
+
+$("#banhang").click(function(){
+    if(!$(this).hasClass("disabled")){
+        $(".menudrop-banhang").toggle("active")
     }
-});
+})
+$("#qlkho").click(function(){
+    if(!$(this).hasClass("disabled")){
+        $(".menudrop-qlkho").toggle("active")
+    }
+})
 //Chức năng quản lý kho
 $(".item-menu").click(function(e){
+    var text=$(this).contents().filter(function() {
+        return this.nodeType === 3;
+    }).text().trim();
     $(".item-menu.active").removeClass("active");
     $(this).addClass("active");
-    switch(e.target.innerText){
+    switch(text){
         case "Quản lý sản phẩm":
             break;
         case "Quản lý nhà cung cấp":
@@ -59,7 +45,32 @@ $(".item-menu").click(function(e){
             break;
         case "Thống kê lịch sử nhập":
             break;
+        case "Quản lý tài khoản":
+            qlTaiKhoan()
+            break;
+        case "Duyệt đơn hàng":
+            break;
+        case "In hóa đơn bán hàng":
+            break;
+        case "Xem hóa đơn bán hàng":
+            break;
+        case "Xem thống kê bán hàng":
+            break;
     }
     
 })
-//Show trang chu
+//Xử lý sự kiện bên quản lý bán hàng nè
+function qlTaiKhoan(){
+    $(".model-right.active").removeClass("active")
+    $(".model-banhang").addClass("active")
+    $(".model-item").click(function(e){
+        $(".model-item.active").removeClass("active")
+        if(e.target.innerText=="Thêm tài khoản"){
+            $(this).addClass("active")
+            $(".model-content").load("./pages/module/themtk.php")
+        }else{
+            $(this).addClass("active")
+            // $(".model-content").load("./pages/module/suatk.php")
+        }
+    }) 
+}

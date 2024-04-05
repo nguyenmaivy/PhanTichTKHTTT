@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/adpanel.css">
+    <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="css/styleAdmin.css">
     <title>Document</title>
 </head>
 <body>
@@ -23,52 +25,41 @@
                     Trang chủ Admin
                 </div>
                 <div class="container">
-                    <i class="ti-server"></i>
-                    Quản lý Kho
+                    <div class="item-container" id="qlkho">
+                        Quản lý Kho <i class="ti-angle-down"></i>
+                    </div>
+                    <ul class="menudrop-qlkho">
+                        <li class="item-menu"><i class="ti-plus"></i> Quản lý sản phẩm </li>
+                        <li class="item-menu"><i class="ti-plus"></i> Quản lý nhà cung cấp</li>
+                        <li class="item-menu"><i class="ti-plus"></i> Tìm kiếm sản phẩm</li>
+                        <li class="item-menu"><i class="ti-plus"></i> Lập phiếu nhập kho</li>
+                        <li class="item-menu"><i class="ti-plus"></i> Thống kê lịch sử nhập</li>
+                    </ul>
+
                 </div>
                 <div class="container">
-                    <i class="ti-money"></i>
-                    Quản lý Bán Hàng
-                </div>
-                <div class="container">
-                    <i class="ti-package"></i>
-                    Thống kê doanh thu
+                    <div class="item-container" id="banhang">
+                        Quản lý Bán Hàng <i class="ti-angle-down"></i>
+                    </div>
+                    <ul class="menudrop-banhang">
+                        <li class="item-menu"><i class="ti-plus"></i> Quản lý tài khoản </li>
+                        <li class="item-menu"><i class="ti-plus"></i> Duyệt đơn hàng</li>
+                        <li class="item-menu"><i class="ti-plus"></i> In hóa đơn bán hàng</li>
+                        <li class="item-menu"><i class="ti-plus"></i> Xem hóa đơn bán hàng</li>
+                        <li class="item-menu"><i class="ti-plus"></i> Xem thống kê bán hàng</li>
+                    </ul>
+
                 </div>
             </div>
             <div id="right-content" >
                 <div class="model-banhang model-right">
                     <div class="top-menu">
                     <ul class="list-group list-group-horizontal menu-container">
-                        <li class="list-group-item item-menu active">Thêm sửa xóa khách hàng</li>
-                        <li class="list-group-item item-menu">Duyệt đơn hàng</li>
-                        <li class="list-group-item item-menu">In hóa đơn bán hàng</li>
-                        <li class="list-group-item item-menu">Xem hóa đơn bán hàng</li>
-                        <li class="list-group-item item-menu">Xem thống kê bán hàng</li>
+                        <li class="list-group-item model-item">Thêm tài khoản</li>
+                        <li class="list-group-item model-item">Sửa tài khoản</li>
                     </ul>
                     </div>
-                </div>
-                <div class="model-kho model-right">
-                    <div class="top-menu">
-                    <ul class="list-group list-group-horizontal menu-container">
-                        <li class="list-group-item item-menu active">Quản lý sản phẩm</li>
-                        <li class="list-group-item item-menu">Quản lý nhà cung cấp</li>
-                        <li class="list-group-item item-menu">Tìm kiếm sản phẩm</li>
-                        <li class="list-group-item item-menu">Lập phiếu nhập kho</li>
-                        <li class="list-group-item item-menu">In phiếu nhập kho</li>
-                        <li class="list-group-item item-menu">Thống kê lịch sử nhập</li>
-                    </ul>
-                    </div>
-                </div>
-                <div class="model-baocao model-right">
-                    <div class="top-menu">
-                    <ul class="list-group list-group-horizontal menu-container">
-                        <li class="list-group-item item-menu active">Quản lý sản phẩm</li>
-                        <li class="list-group-item item-menu">Quản lý nhà cung cấp</li>
-                        <li class="list-group-item item-menu">Tìm kiếm sản phẩm</li>
-                        <li class="list-group-item item-menu">Lập phiếu nhập kho</li>
-                        <li class="list-group-item item-menu">Thống kê lịch sử nhập</li>
-                    </ul>
-                    </div>
+                    <div class="model-content"></div>
                 </div>
                 <!-- <div class="content-doanhthu">
                     <p>báo cáo doanh thu</p>

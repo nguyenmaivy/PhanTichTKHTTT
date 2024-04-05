@@ -1,5 +1,4 @@
-<div class="model-them">
-                <div class="tittle-form">Thêm tài khoản</div>
+<div class="model-them p-2">
                 <form id="form-them">
                   <div class="modal_content-input-box form-group">
                           <label for="user1-register">Số điện thoại</label>

@@ -1,9 +1,4 @@
-<!-- Đoạn này đọc dữ liệu từ CSDL ra render ra form  
-    CSDL đâu??
--->
-
-<div class="model-sua">
-<div class="tittle-form">Sửa tài khoản</div>
+<div class="model-sua p-2">
 <form id="form-sua">
     <div class="modal_content-input-box form-group">
             <label for="user1-register">Số điện thoại</label>
@@ -30,16 +25,6 @@
             <label for="username-register">Tên đăng ký</label>
             <input type="text" placeholder="Nhập tên đăng ký" id="username-register" name="username_register">
             <span class="form-message"></span>
-        </div>
-        <div class="modal_content-input-box form-group">
-            <label for="username-register">Loại tài khoản</label>
-            <select name="account_type">
-            <option value="1">Khách hàng</option>
-            <option value="2">Quản lý bán hàng</option>
-            <option value="3">Quản lý kho</option>
-            <option value="4">Admin</option>
-            <option value="4">Super Admin</option>
-            </select>
         </div>
         <div class="modal_content-btn-box">
             <button type="submit" class="btn-login btn-form btn-default" id="btn-register"><span>Xác nhận thay đổi</span></button>
