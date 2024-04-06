@@ -26,15 +26,21 @@
                 <input type="text" placeholder="Nhập tên đăng ký" id="username-register" name="username_register">
                 <span class="form-message"></span>
             </div>
+            <span class="error-login mb-2">Tài khoản tồn tại</span>
             <div class="modal_content-btn-box">
                 <button type="submit" class="btn-login btn-form btn-default" id="btn-register"><span>Thêm tài khoản</span></button>
                 <button type="reset" class="btn-form btn-closee">Làm mới</button>
-                <span class="error-login">Tài khoản đã tồn tại</span>
                 <!-- <span><a href="index.php?chon=home"></a></span> -->
             </div>
     </form>
 </div>
 <script>
+    $(".btn-closee").click(function(){
+        $(".btn-login").addClass("btn-default")
+    })
+    $("input").on("input",function(){
+        $(".error-login").css("display","none")
+    })
     Validator({
         form: "#form-them",
         rules: [
@@ -54,9 +60,27 @@
         ],
         errorElement: ".form-message",
         onSubmit: function(value){
-            console.log(value);
-            //Gửi dữ liệu cho server
-
+            console.log("cmmmm");
+            var data=JSON.stringify(value);
+            var xhr=new XMLHttpRequest();
+            xhr.open("POST","./pages/module/xltaotk.php");
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send("dataJSON="+data);
+            xhr.onload=function(){
+                if(xhr.status>=200 && xhr.status<300){
+                    console.log(xhr.responseText);
+                    if(xhr.responseText==1){
+                        alert("Tạo tài khoản thành công")
+                        $(".model-content").load("./pages/themtk.php")
+                    }
+                    else if(xhr.responseText==2){
+                        $(".error-login").css("display","flex")
+                    }
+                    else {
+                        alert("Tạo tài khoản thất bại")
+                    }
+                }
+            }
         }
     })
 </script>

@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div id="right-content" >
-                <div class="model-banhang model-right">
+                <div class="model-tk model-right">
                     <div class="top-menu">
                     <ul class="list-group list-group-horizontal menu-container">
                         <li class="list-group-item model-item">Thêm tài khoản</li>
@@ -62,6 +62,33 @@
                     </div>
                     <div class="model-content">
 
+                    </div>
+                </div>
+                <div class="model-duyetdon model-right">
+                    <div class="top-menu">
+                    <ul class="list-group list-group-horizontal menu-container">
+                        <li class="list-group-item model-item">Danh sách đơn hàng</li>
+                        <li class="list-group-item model-item">Lọc danh sách đơn hàng chưa duyệt</li>
+                    </ul>
+                    </div>
+                    <div class="model-content">
+                        <div class="table-content">
+                            <table class="table table-striped ">
+                                <thead>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Ngày đặt hàng</th>
+                                    <th>Trạng thái đơn</th>
+                                    <th>Địa chỉ giao</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                 <!-- dữ liệu sẽ được load ở đây -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- <div class="content-doanhthu">

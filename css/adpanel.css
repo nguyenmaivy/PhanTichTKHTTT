@@ -116,7 +116,10 @@ body {
 .menudrop-qlkho.active {
     display: block;
 }
-.menudrop-banhang.active {
+.menudrop-tk.active {
+    display: block;
+}
+.model-duyetdon.active {
     display: block;
 }
 .model-item {
@@ -129,4 +132,18 @@ body {
     justify-content: center;
     display: flex;
     margin-bottom: 5px;
+}
+.table-content {
+    /* height: 500px;
+    overflow: auto; */
+}
+.button-duyet {
+    font-size: 12px;
+}
+.button-duyet.disabled {
+    cursor: not-allowed;
+}
+.button-duyet.active {
+    background-color: #079DD9;
+    cursor: default;
 }

@@ -80,11 +80,13 @@ CREATE TABLE `dichvukhuyenmai` (
 CREATE TABLE `donhang` (
   `MaDonHang` varchar(15) NOT NULL,
   `NgayDatHang` date NOT NULL,
-  `DiaChiGiaoHang` varchar(20) NOT NULL,
+  `DiaChiGiaoHang` varchar() NOT NULL,
   `TrangThaiDonHang` tinyint(1) NOT NULL,
   `TongGiaTriDonHang` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `donhang`(`MaDonHang`, `NgayDatHang`, `DiaChiGiaoHang`, `TrangThaiDonHang`, `TongGiaTriDonHang`) 
+VALUES ('1',NOW(),'Thôn 2, xã Tân Sơn, Quận 8',0,'100000000')
 -- --------------------------------------------------------
 
 --
@@ -196,7 +198,8 @@ CREATE TABLE `taikhoan` (
 
 -- Đổ dữ liệu cho `taikhoan`
 INSERT INTO `taikhoan`(`UserName`, `TenNhomQuyen`, `MatKhau`, `SDT`, `TrangThai`) 
-VALUES ('Admin','admin','Admin@','0123456789','show');
+VALUES ('Admin','admin','Admin@','0123456789','show'),
+        ('test','KH','123456@','0369698361','show');
 -- --------------------------------------------------------
 
 --

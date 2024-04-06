@@ -85,7 +85,7 @@ function Validator(option){
                 // Submit bằng js
                 
                 if(typeof option.onSubmit === 'function'){
-                    var enableInput=formElement.querySelectorAll('[name]:not([disabled])')
+                    var enableInput=formElement.querySelectorAll('[name]')
                     var valueForm=Array.from(enableInput).reduce((value,input) =>{
                         switch (input?.type){
                             case 'radio':

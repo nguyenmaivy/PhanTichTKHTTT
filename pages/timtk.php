@@ -19,6 +19,9 @@
     $("#user1-register").on("input",function(){
         $(".error-login").css("display","none");
     })
+    $(".btn-closee").click(function(){
+        $(".btn-login").addClass("btn-default")
+    })
     Validator({
         form: "#form-tim",
         rules: [
@@ -30,7 +33,6 @@
             //Trả dữ liệu về sever
             var xhr = new XMLHttpRequest();
             var status=<?php echo $_GET['status'];?>;
-            console.log(status);
             xhr.open('GET', "pages/module/xltimtk.php?user1_register=" + value.user1_register + "&status=" + status);
             xhr.send();
             xhr.onload = function loadData() {

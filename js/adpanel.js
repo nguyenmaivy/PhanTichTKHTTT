@@ -15,7 +15,7 @@ function init(index){
         })
     })
 }
-init(2);
+init(0);
 
 $("#banhang").click(function(){
     if(!$(this).hasClass("disabled")){
@@ -49,6 +49,7 @@ $(".item-menu").click(function(e){
             qlTaiKhoan()
             break;
         case "Duyệt đơn hàng":
+            duyetdonhang()
             break;
         case "In hóa đơn bán hàng":
             break;
@@ -62,7 +63,7 @@ $(".item-menu").click(function(e){
 //Xử lý sự kiện bên quản lý bán hàng nè
 function qlTaiKhoan(){
     $(".model-right.active").removeClass("active")
-    $(".model-banhang").addClass("active")
+    $(".model-tk").addClass("active")
     $(".model-item").click(function(e){
         $(".model-item.active").removeClass("active")
         if(e.target.innerText=="Thêm tài khoản"){
@@ -78,4 +79,36 @@ function qlTaiKhoan(){
             $(".model-content").load("./pages/timtk.php?status=2")
         }
     }) 
+}
+function duyetdonhang(){
+    $(".model-right.active").removeClass("active")
+    $(".model-duyetdon").addClass("active")
+    $(".model-item").click(function(e){
+        $(".model-item.active").removeClass("active")
+        if(e.target.innerText=="Danh sách đơn hàng"){
+            $(this).addClass("active");
+            $("tbody").load("./pages/module/loaddon.php")
+        }
+        else if(e.target.innerText=="Lọc danh sách đơn hàng chưa duyệt"){
+            $(this).addClass("active");
+            $("tbody").load("./pages/module/loaddon.php?status=0",function(){
+                $(".button-duyet.active").click(function(){
+                    $(this).removeClass("active");
+                    handleDuyet($(this).attr("id"))
+                })
+            })
+        }
+    })
+}
+function handleDuyet(id){
+    var xhr=new XMLHttpRequest();
+    xhr.open("GET","./pages/module/loaddon.php?id="+id);
+    xhr.send();
+    xhr.onload=function (){
+        if(xhr.status>=200 && xhr.status<300){
+            if(xhr.responseText==1){
+                alert("Duyệt đơn hàng thành công")
+            }
+        }
+    }
 }
