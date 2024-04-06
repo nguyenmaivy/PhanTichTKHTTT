@@ -72,6 +72,7 @@ body {
     border: 1px black solid;
     width: 80%;
     height: 700px;
+    overflow: auto;
 }
 .container.active {
     /* color: #428BCA; */
@@ -112,6 +113,7 @@ body {
 .menudrop-banhang {
     display: none;
     list-style-type: none;
+    padding-left: 0;
 }
 .menudrop-qlkho.active {
     display: block;
@@ -139,6 +141,13 @@ body {
 }
 .button-duyet {
     font-size: 12px;
+    padding: 2px;
+}
+.button-in {
+    font-size: 12px;
+    background-color: #079DD9;
+    cursor: pointer;
+    padding: 2px;
 }
 .button-duyet.disabled {
     cursor: not-allowed;
@@ -146,4 +155,15 @@ body {
 .button-duyet.active {
     background-color: #079DD9;
     cursor: default;
+}
+.img-sanpham {
+    width: 100px;
+}
+.btn-loaddon,.btn-donhang1 {
+    cursor: pointer;
+}
+.text-cent {
+    text-align: center;
+}
+.tittle-hoadon {
 }

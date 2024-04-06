@@ -52,6 +52,7 @@ $(".item-menu").click(function(e){
             duyetdonhang()
             break;
         case "In hóa đơn bán hàng":
+            inHoaDon()
             break;
         case "Xem hóa đơn bán hàng":
             break;
@@ -84,31 +85,62 @@ function duyetdonhang(){
     $(".model-right.active").removeClass("active")
     $(".model-duyetdon").addClass("active")
     $(".model-item").click(function(e){
-        $(".model-item.active").removeClass("active")
+        $(".model-item.active").removeClass("active");
         if(e.target.innerText=="Danh sách đơn hàng"){
             $(this).addClass("active");
-            $("tbody").load("./pages/module/loaddon.php")
+
+            $(".model-content").load("./pages/module/loaddon.php",function(){
+                    viewDuyet();
+            })
+            
         }
         else if(e.target.innerText=="Lọc danh sách đơn hàng chưa duyệt"){
             $(this).addClass("active");
-            $("tbody").load("./pages/module/loaddon.php?status=0",function(){
-                $(".button-duyet.active").click(function(){
-                    $(this).removeClass("active");
-                    handleDuyet($(this).attr("id"))
-                })
+            $(".table-content").load("./pages/module/loaddon.php?status=0",function(){
+                viewDuyet();
             })
         }
     })
+    
 }
+function viewDuyet(){
+    $(".button-duyet.active").click(function(e){
+        e.stopPropagation();
+        $(this).removeClass("active")
+        $(this).addClass("disabled")
+        $(this).closest("tr").find(".tittle-status").text("Đã duyệt");
+        handleDuyet($(this).attr("id_f"))
+    })
+    $(".button-in").click(function(e){
+        e.stopPropagation()
+        inHoaDon();
+    })
+    $("tr").click(function(){
+        $(".table-content").load("./pages/module/loaddon.php?id="+$(this).attr("id")+"&chon=xem",function(){
+            $(".btn-loaddon").click(function(){
+                $(".table-content").load("./pages/module/loaddon.php",function(){
+                    viewDuyet();
+                })
+            })
+        })
+    })
+}
+
 function handleDuyet(id){
     var xhr=new XMLHttpRequest();
-    xhr.open("GET","./pages/module/loaddon.php?id="+id);
+    xhr.open("GET","./pages/module/loaddon.php?id="+id+"&chon=capnhat");
     xhr.send();
     xhr.onload=function (){
         if(xhr.status>=200 && xhr.status<300){
+            console.log(xhr.responseText)
             if(xhr.responseText==1){
                 alert("Duyệt đơn hàng thành công")
             }
+            else alert("Duyệt đơn hàng thất bại")
         }
+        else alert("Không thể kết nối với server")
     }
+}
+function inHoaDon(){
+    $(".table-content").load("./pages/module/xlinhoadon.php")
 }

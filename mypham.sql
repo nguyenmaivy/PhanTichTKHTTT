@@ -35,6 +35,9 @@ CREATE TABLE `chitietdonhang` (
   `MaSP` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `chitietdonhang`(`MaChiTietDonHang`, `SoLuong`, `GiaCa`, `MaDonHang`, `MaSP`) 
+VALUES ('1','5','350000','1','1'),
+		('2','7','480000','1','8')
 -- --------------------------------------------------------
 
 --

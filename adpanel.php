@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="fonts/fontawesome-free-6.4.0-web/css/all.min.css">
-    <link href="css/style.css" rel="stylesheet">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/adpanel.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="css/styleAdmin.css">
+    
     <title>Document</title>
 </head>
 <body>
@@ -61,7 +63,6 @@
                     </ul>
                     </div>
                     <div class="model-content">
-
                     </div>
                 </div>
                 <div class="model-duyetdon model-right">
@@ -72,25 +73,19 @@
                     </ul>
                     </div>
                     <div class="model-content">
-                        <div class="table-content">
-                            <table class="table table-striped ">
-                                <thead>
-                                <tr>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Ngày đặt hàng</th>
-                                    <th>Trạng thái đơn</th>
-                                    <th>Địa chỉ giao</th>
-                                    <th>Tổng tiền</th>
-                                    <th>Thao tác</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                 <!-- dữ liệu sẽ được load ở đây -->
-                                </tbody>
-                            </table>
-                        </div>
+                        
+                       
                     </div>
                 </div>
+                <!-- <div class="model-in model-right">
+                    <div class="top-menu">
+                    <ul class="list-group list-group-horizontal menu-container">
+                    <li class="list-group-item model-item active">Hóa đơn bán hàng</li>
+                    </ul>
+                    </div>
+                    <div class="model-content">
+                    </div>
+                </div> -->
                 <!-- <div class="content-doanhthu">
                     <p>báo cáo doanh thu</p>
                     <label for="1">từ ngày</label>
