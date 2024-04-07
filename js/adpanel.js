@@ -52,7 +52,7 @@ $(".item-menu").click(function(e){
             duyetdonhang()
             break;
         case "In hóa đơn bán hàng":
-            inHoaDon()
+            // inHoaDon()
             break;
         case "Xem hóa đơn bán hàng":
             break;
@@ -85,14 +85,14 @@ function duyetdonhang(){
     $(".model-right.active").removeClass("active")
     $(".model-duyetdon").addClass("active")
     $(".model-item").click(function(e){
+        
         $(".model-item.active").removeClass("active");
         if(e.target.innerText=="Danh sách đơn hàng"){
-            $(this).addClass("active");
-
-            $(".model-content").load("./pages/module/loaddon.php",function(){
-                    viewDuyet();
-            })
             
+            $(this).addClass("active");
+            $(".model-content-hd").load("./pages/module/loaddon.php",function(){
+                viewDuyet();
+            })
         }
         else if(e.target.innerText=="Lọc danh sách đơn hàng chưa duyệt"){
             $(this).addClass("active");
@@ -111,9 +111,11 @@ function viewDuyet(){
         $(this).closest("tr").find(".tittle-status").text("Đã duyệt");
         handleDuyet($(this).attr("id_f"))
     })
+    
     $(".button-in").click(function(e){
         e.stopPropagation()
-        inHoaDon();
+        
+        inHoaDon($(this).attr("id_i"));
     })
     $("tr").click(function(){
         $(".table-content").load("./pages/module/loaddon.php?id="+$(this).attr("id")+"&chon=xem",function(){
@@ -141,6 +143,17 @@ function handleDuyet(id){
         else alert("Không thể kết nối với server")
     }
 }
-function inHoaDon(){
-    $(".table-content").load("./pages/module/xlinhoadon.php")
+function inHoaDon(id){
+    $(".table-content").load("./pages/module/xlinhoadon.php?id="+id,function(){
+        $(".print-pdf").click(function(e){
+            e.stopPropagation();
+            window.open("./hoadon.php?id="+id);
+        })
+        $(".btn-loaddon").click(function(){
+            $(".table-content").load("./pages/module/loaddon.php",function(){
+                viewDuyet();
+            })
+        });
+    })
+    
 }

@@ -57,7 +57,8 @@
             WHERE chitietdonhang.MaDonHang =".$id.";
             ";
             $result=$conn->excuteSQL($strSQL);
-            $data="<div class='table-content'><span class='btn-loaddon'>Đơn hàng > </span><span class='btn-btn-chitiet'> Chi tiết đơn</span><table class='table table-striped '>
+            $data="
+            <div class='table-content'><span class='btn-loaddon'>Đơn hàng > </span><span class='btn-btn-chitiet'> Chi tiết đơn</span><table class='table table-striped '>
             <thead>
             <tr>
                 <th>Mã sản phẩm</th>
@@ -86,7 +87,7 @@
             }
             $data.="</tbody>
             </table></div>
-            <div>Tổng tiền:".formatCurrency($tongtien)." </div>"
+            <div><h6 class='d-inline'>Tổng tiền: ".formatCurrency($tongtien)."</h6></div>"
             ;
             echo $data;
         }
@@ -99,5 +100,5 @@
 
         }
     }
-
+    $conn->disconnect();
 ?>

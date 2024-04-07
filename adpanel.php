@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="./css/adpanel.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="css/styleAdmin.css">
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -46,7 +47,6 @@
                     <ul class="menudrop-banhang">
                         <li class="item-menu"><i class="ti-plus"></i> Quản lý tài khoản </li>
                         <li class="item-menu"><i class="ti-plus"></i> Duyệt đơn hàng</li>
-                        <li class="item-menu"><i class="ti-plus"></i> In hóa đơn bán hàng</li>
                         <li class="item-menu"><i class="ti-plus"></i> Xem hóa đơn bán hàng</li>
                         <li class="item-menu"><i class="ti-plus"></i> Xem thống kê bán hàng</li>
                     </ul>
@@ -72,9 +72,7 @@
                         <li class="list-group-item model-item">Lọc danh sách đơn hàng chưa duyệt</li>
                     </ul>
                     </div>
-                    <div class="model-content">
-                        
-                       
+                    <div class="model-content-hd">
                     </div>
                 </div>
                 <!-- <div class="model-in model-right">
@@ -152,4 +150,5 @@
     <script src="./js/vadidation.js"></script>
     <script src="./js/jquery.min.js"></script>
     <script src="./js/adpanel.js"></script>
+</body>
 </html>
