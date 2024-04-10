@@ -10,26 +10,36 @@
         $result = $price . $result;
         return $result;
     }
-    include './controller.php';
-    $conn=new controller;
+    include './connect.php';
+    $conn=new connect;
     $conn->constructor();
     $data="";
-    if(!isset($_GET['id'])){
-        $strSQL="SELECT * FROM `donhang` WHERE ".(isset($_GET['status'])? "TrangThaiDonHang='0'" : "1");
+    if(!isset($_GET['chon'])){
+        $strtmp="";
+        if(isset($_GET['from'])){
+            $from=$_GET['from'];
+            $to=$_GET['to'];
+            $strtmp="AND NgayDatHang BETWEEN '".$from."' AND '".$to."'";
+        }
+        $strSQL="SELECT * FROM `donhang` WHERE TrangThaiDonHang='0' ".(!isset($_GET['status']) ? "OR TrangThaiDonHang='1'" : "").$strtmp;
         $result=$conn->excuteSQL($strSQL);
-        if(mysqli_num_rows($result)>0){
-            $data="<div class='table-content'><div class='btn-loaddon'>Đơn hàng > </div><table class='table table-striped'>
-                <thead>
-                <tr>
-                    <th>Mã đơn hàng</th>
+        $data="<div class='table-content'><nav aria-label='breadcrumb'>
+                        <ol class='breadcrumb'>
+                        <li class='breadcrumb-item active'aria-current='page'>Đơn hàng</li>
+                        </ol>
+                    </nav>
+                    <label for='form-time'>Từ ngày<input type='date' id='from-time'></label>
+                    <label for='to-time'>Đến ngày<input type='date' id='to-time'></label>
+                    <button onclick='handTimeDon()'>Lọc</button>
+                    <table class='table table-striped'>
+                    <thead><tr><th>Mã đơn hàng</th>
                     <th>Ngày đặt hàng</th>
                     <th>Trạng thái đơn</th>
                     <th>Địa chỉ giao</th>
                     <th>Tổng tiền</th>
                     <th>Thao tác</th>
-                </tr>
-                </thead>
-                <tbody>";
+                    </tr></thead><tbody>";
+        if(mysqli_num_rows($result)>0){
             while($row=mysqli_fetch_array($result)){
                 $data.="<tr id='".$row['MaDonHang']."'>
                 <td>".$row['MaDonHang']."</td>
@@ -42,15 +52,16 @@
                 </td>
                 </tr>";
             }
-            $data.="</tbody>
-            </table> </div>";
         }
+        $data.="</tbody>
+        </table> </div>";
         echo $data;
     }
     else {
         $chon=$_GET['chon'];
-        $id=$_GET['id'];
+        
         if($chon=="xem"){
+            $id=$_GET['id'];
             $strSQL="SELECT * 
             FROM chitietdonhang
             LEFT JOIN sanpham ON chitietdonhang.MaSP = sanpham.MaSP
@@ -58,9 +69,11 @@
             ";
             $result=$conn->excuteSQL($strSQL);
             $data="
-            <div class='table-content'><span class='btn-loaddon'>Đơn hàng > </span><span class='btn-btn-chitiet'> Chi tiết đơn</span><table class='table table-striped '>
-            <thead>
-            <tr>
+            <div class='table-content'><ol class='breadcrumb'>
+            <li class='breadcrumb-item'>Đơn hàng</a></li>
+            <li class='breadcrumb-item active'aria-current='page'>Chi tiết đơn hàng</li>
+            </ol></nav><table class='table table-striped '>
+            <thead><tr>
                 <th>Mã sản phẩm</th>
                 <th>Tên sản phẩm</th>
                 <th>Hình ảnh</th>
@@ -92,13 +105,50 @@
             echo $data;
         }
         else if($chon=="capnhat"){
-            $strSQL="UPDATE `donhang` SET `TrangThaiDonHang`='1' WHERE MaDonHang='".$id."'";
+            //check so luong
+            $id=$_GET['id'];
+            $strSQL="SELECT * 
+            FROM chitietdonhang
+            LEFT JOIN sanpham ON chitietdonhang.MaSP = sanpham.MaSP
+            WHERE chitietdonhang.MaDonHang ='".$id."'";
             $result=$conn->excuteSQL($strSQL);
-            if($result==1){
-                echo 1;
+            $flag=true;
+            if(mysqli_num_rows($result)>0){
+                while(mysqli_fetch_assoc($result)){
+                    if($row['SoLuong'] > $row['SoLuongSP']){
+                        $flag=false;
+                        break;
+                    }
+                }
             }
-
+            if($flag){
+                $strSQL="SELECT * 
+                FROM chitietdonhang
+                LEFT JOIN sanpham ON chitietdonhang.MaSP = sanpham.MaSP
+                WHERE chitietdonhang.MaDonHang ='".$id."'";
+                $result=$conn->excuteSQL($strSQL);
+                if(mysqli_num_rows($result)>0){
+                    while($row=mysqli_fetch_assoc($result)){
+                        $masp=$row['MaSP'];
+                        $soluong=$row['SoLuong'];
+                        $soluongSQL=$row['SoLuongSP'];
+                        $strSQL="UPDATE `sanpham` SET `SoLuongSP`='".($soluongSQL-$soluong)."' WHERE MaSP='".$masp."'";
+                        $conn->excuteSQL($strSQL);
+                    }
+                    echo 1;
+                }
+                $strSQL="UPDATE `donhang` SET `TrangThaiDonHang`='1' WHERE MaDonHang='".$id."'";
+                $result=$conn->excuteSQL($strSQL);
+            }
+            else echo 0;
         }
+        // else if($chon=="ngay"){
+        //     $from=$_GET['from'];
+        //     $to=$_GET['to'];
+        //     $strSQL="SELECT *
+        //     FROM donhang
+        //     WHERE NgayDatHang BETWEEN '2023-02-21' AND '2024-05-24';";
+        // }
     }
     $conn->disconnect();
 ?>

@@ -1,12 +1,10 @@
 <?php 
     //Thư viện number-to-words
     require '../.././lib/vendor/autoload.php';
+    require './controller.php';
     use PHPViet\NumberToWords\Transformer;
     $transformer = new Transformer();
-
-    include './controller.php';
-    $conn=new controller;
-    $conn->constructor();
+    $banhang=new banhang;
     function formatCurrency($price) {
         $price = (int) str_replace('.', '', $price);
         $result = '';
@@ -22,18 +20,16 @@
     $strSQL='';
     if(isset($_GET['id'])){
         $id=$_GET['id'];
-        $strSQL="SELECT * 
-        FROM chitietdonhang
-        LEFT JOIN sanpham ON chitietdonhang.MaSP = sanpham.MaSP
-        WHERE chitietdonhang.MaDonHang =".$id.";";
-        $result=$conn->excuteSQL($strSQL);
+        $result=$banhang->timdonhang($id);
+        $row=mysqli_fetch_assoc($result);
         if(mysqli_num_rows($result)>0){
+            $arr=explode('-',$row['NgayDatHang']);
             $data="
             <div class='btn-loaddon'>Đơn hàng > Hóa đơn</div> 
             <button class='float-right print-pdf'>Xem PDF</button>
                     <div class='wrapper-hoadon'>
                         <h2 class='text-cent'>HÓA ĐƠN BÁN HÀNG</h2>
-                        <p class='text-cent'>Ngày... tháng...năm</p>
+                        <p class='text-cent'>Ngày ".$arr[2]." tháng ".$arr[1]." năm ".$arr[0]."</p>
                         <span>Đơn vị bán hàng: </span><h5 class='d-inline'> Cửa hàng mỹ phẩm Belleza</h5><br>
                         <span >Mã số thuế:<h6 class='d-inline'> 0123456789</h6></span>
                         <p>Địa chỉ: 99 An Dương Vương, P16, Q8, TPHCM</p>
@@ -99,5 +95,4 @@
         }
     }
 
-    $conn->disconnect();
 ?>

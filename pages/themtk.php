@@ -63,7 +63,7 @@
             console.log("cmmmm");
             var data=JSON.stringify(value);
             var xhr=new XMLHttpRequest();
-            xhr.open("POST","./pages/module/xltaotk.php");
+            xhr.open("POST","./pages/module/taikhoan.php?them");
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.send("dataJSON="+data);
             xhr.onload=function(){
@@ -77,6 +77,7 @@
                         $(".error-login").css("display","flex")
                     }
                     else {
+                        echo 
                         alert("Tạo tài khoản thất bại")
                     }
                 }

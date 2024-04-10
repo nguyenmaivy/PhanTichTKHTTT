@@ -48,18 +48,13 @@ $(".item-menu").click(function(e){
         case "Quản lý tài khoản":
             qlTaiKhoan()
             break;
-        case "Duyệt đơn hàng":
+        case "Đơn hàng":
             duyetdonhang()
             break;
-        case "In hóa đơn bán hàng":
-            // inHoaDon()
-            break;
-        case "Xem hóa đơn bán hàng":
-            break;
         case "Xem thống kê bán hàng":
+            xemThongKe();
             break;
     }
-    
 })
 //Xử lý sự kiện bên quản lý bán hàng nè
 function qlTaiKhoan(){
@@ -88,7 +83,6 @@ function duyetdonhang(){
         
         $(".model-item.active").removeClass("active");
         if(e.target.innerText=="Danh sách đơn hàng"){
-            
             $(this).addClass("active");
             $(".model-content-hd").load("./pages/module/loaddon.php",function(){
                 viewDuyet();
@@ -155,5 +149,46 @@ function inHoaDon(id){
             })
         });
     })
-    
+}
+function handTimeDon(){
+    var from = $("#from-time").val();
+    var to = $("#to-time").val();
+    if($(".model-item.active").text().trim()=="Danh sách đơn hàng"){
+        $(".model-content-hd").load("./pages/module/loaddon.php?from="+from+"&to="+to,function(){
+            viewDuyet();
+        })
+    }
+    else {
+        $(".model-content-hd").load("./pages/module/loaddon.php?status=0&from="+from+"&to="+to,function(){
+            viewDuyet();
+        })
+    }
+}
+function handTimeTK(){
+    var from = $("#from-time").val();
+    var to = $("#to-time").val();
+        $(".baocao").load("./pages/thongkeban.php?khoang&from="+from+"&to="+to,function(){
+        })
+}
+function xemThongKe(){
+    $(".model-right.active").removeClass("active")
+    $(".model-thongke").addClass("active")
+    $(".model-item").click(function(e){
+        $(".model-item.active").removeClass("active")
+        if(e.target.innerText=="Báo cáo hôm nay"){
+            var date=new Date();
+            var year = date.getFullYear();
+            var month = (date.getMonth() + 1).toString().padStart(2, '0');
+            var day = date.getDate().toString().padStart(2, '0'); 
+            var formattedDate = year + '-' + month + '-' + day;
+            $(this).addClass("active")
+            $(".model-content-tkbh").load("./pages/thongkeban.php?day="+formattedDate)
+        }
+        else if(e.target.innerText=="Báo cáo theo khoảng thời gian"){
+            $(this).addClass("active")
+            $(".model-content-tkbh").html(`<label for=form-time'>Từ ngày<input type='date' id='from-time'></label>
+            <label for='to-time'>Đến ngày<input type='date' id='to-time'></label>
+            <button onclick='handTimeTK()'>Lọc</button><div class="baocao"></div>`)
+        }
+    })
 }

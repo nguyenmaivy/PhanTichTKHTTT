@@ -33,7 +33,7 @@
             //Trả dữ liệu về sever
             var xhr = new XMLHttpRequest();
             var status=<?php echo $_GET['status'];?>;
-            xhr.open('GET', "pages/module/xltimtk.php?user1_register=" + value.user1_register + "&status=" + status);
+            xhr.open('GET', "pages/module/taikhoan.php?tim&user1_register=" + value.user1_register+"&status="+status);
             xhr.send();
             xhr.onload = function loadData() {
                 if (xhr.status >= 200 && xhr.status < 300) {
@@ -46,7 +46,7 @@
                             var flag=confirm("Bạn có chắc muốn xóa tài khoản này?");
                             if(flag){
                                 xhr = new XMLHttpRequest();
-                                xhr.open('GET', "./pages/module/xlxoatk.php?user1_register=" + ttTK.SDT);
+                                xhr.open('GET', "./pages/module/taikhoan.php?user1_register=" + ttTK.SDT);
                                 xhr.send();
                                 xhr.onload=function(){
                                     if(xhr.status >=200 && xhr.status<300){

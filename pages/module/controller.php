@@ -1,23 +1,94 @@
-<?php
-class controller{
+<?php 
+include 'connect.php';
+class sanpham{
     private $conn;
-    function constructor() {
-        $this->conn=new mysqli("127.0.0.1","root","","mypham");
-        if($this->conn->connect_error){
-            die("connect failed");
-        }
+    function __construct(){
+        $this->conn = new connect;
     }
-    function excuteSQL($sql){
-        return $this->conn->query($sql);
+    function sanpham($masp){
+        $this->conn->constructor();
+        $strSQL="SELECT * FROM `sanpham` WHERE MaSP='".$masp."'";
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
     }
-    function modifySQL($sql){
-        $result=$this->conn->query($sql);
-        if($result>0)
-            return true;
-        return false;
+    
+}
+class banhang{
+    private $conn;
+    function __construct(){
+        $this->conn = new connect;
     }
-    function disconnect() {
-        $this->conn->close();
+    function ngay($date){
+        $this->conn->constructor();
+        $strSQL="SELECT * 
+        FROM chitietdonhang
+        LEFT JOIN sanpham ON chitietdonhang.MaSP = sanpham.MaSP
+        LEFT JOIN donhang ON donhang.MaDonHang=chitietdonhang.MaDonHang
+        WHERE  donhang.NgayDatHang='".$date."'";
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
+    }
+    function timdonhang($madon){
+        $this->conn->constructor();
+        $strSQL="SELECT * 
+        FROM chitietdonhang
+        LEFT JOIN sanpham ON chitietdonhang.MaSP = sanpham.MaSP
+        LEFT JOIN donhang ON donhang.MaDonHang=chitietdonhang.MaDonHang
+        WHERE  donhang.MaDonHang='".$madon."'";
+        
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
+    }
+    function khoangtime($from,$to){
+        $this->conn->constructor();
+        $strSQL="SELECT * 
+        FROM chitietdonhang
+        LEFT JOIN sanpham ON chitietdonhang.MaSP = sanpham.MaSP
+        LEFT JOIN donhang ON donhang.MaDonHang=chitietdonhang.MaDonHang
+        WHERE NgayDatHang BETWEEN '".$from."' AND '".$to."'";
+        // echo $strSQL;
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
+    }
+}
+class taikhoan{
+    private $conn;
+    function __construct(){
+        $this->conn=new connect;
+    }
+    function timtk($sdt){
+        $this->conn->constructor();
+        $strSQL="SELECT * FROM `taikhoan` WHERE SDT='".$sdt."'";
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
+    }
+    function themtk($data){
+        $this->conn->constructor();
+        $strSQL="INSERT INTO `taikhoan`(`UserName`, `MatKhau`, `SDT`, `TenNhomQuyen`, `TrangThai`) 
+            VALUES ('".$data->username_register."','".$data->password_register."','".$data->user1_register."','KH', 'show')";
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
+    }
+    function xoatk($sdt){
+        $this->conn->constructor();
+        $strSQL="DELETE FROM `taikhoan` WHERE SDT='".$sdt."'";
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
+    }
+    function suatk($data){
+        $this->conn->constructor();
+        $strSQL="UPDATE `taikhoan` 
+        SET `UserName`='".$data->username_register."',`MatKhau`='".$data->password_register."',`TrangThai`='".$data->status_account."'
+        WHERE SDT='".$data->user1_register."'";
+        $result=$this->conn->excuteSQL($strSQL);
+        return $result;
     }
 
 }

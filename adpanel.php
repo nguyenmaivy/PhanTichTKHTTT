@@ -46,14 +46,13 @@
                     </div>
                     <ul class="menudrop-banhang">
                         <li class="item-menu"><i class="ti-plus"></i> Quản lý tài khoản </li>
-                        <li class="item-menu"><i class="ti-plus"></i> Duyệt đơn hàng</li>
-                        <li class="item-menu"><i class="ti-plus"></i> Xem hóa đơn bán hàng</li>
+                        <li class="item-menu"><i class="ti-plus"></i> Đơn hàng</li>
                         <li class="item-menu"><i class="ti-plus"></i> Xem thống kê bán hàng</li>
                     </ul>
 
                 </div>
             </div>
-            <div id="right-content" >
+            <div id="right-content">
                 <div class="model-tk model-right">
                     <div class="top-menu">
                     <ul class="list-group list-group-horizontal menu-container">
@@ -73,6 +72,16 @@
                     </ul>
                     </div>
                     <div class="model-content-hd">
+                    </div>
+                </div>
+                <div class="model-thongke model-right">
+                    <div class="top-menu">
+                    <ul class="list-group list-group-horizontal menu-container">
+                        <li class="list-group-item model-item">Báo cáo hôm nay</li>
+                        <li class="list-group-item model-item">Báo cáo theo khoảng thời gian</li>
+                    </ul>
+                    </div>
+                    <div class="model-content-tkbh mt-5">
                     </div>
                 </div>
                 <!-- <div class="model-in model-right">
