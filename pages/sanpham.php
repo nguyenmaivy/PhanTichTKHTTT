@@ -1,23 +1,23 @@
 <?php
 // Include database connection parameters
-require("connect.php");
+require("connect_cuatui.php");
 
 
 // Function to fetch products from the database
-function fetchProducts($conn) {
-    $sql = "SELECT id, name, price, image FROM products";
+function fetchSanpham($conn) {
+    $sql = "SELECT MaSP, TenSP, GiaSP, HinhAnh FROM sanpham";
     $result = $conn->query($sql);
     if (!$result) {
         die("Lỗi truy vấn: " . $conn->error);
     }
 
-    $products = [];
+    $sanpham = [];
     while ($row = $result->fetch_assoc()) {
-        $products[] = $row;
+        $sanpham[] = $row;
     }
 
     $result->close(); // Đóng kết quả
 
-    return $products;
+    return $sanpham;
 }
 ?>
