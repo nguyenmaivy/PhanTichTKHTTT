@@ -3,6 +3,10 @@
 }
 .content-left {
     flex-shrink: 1;
+    display: none;
+}
+.content-left.active {
+    display: block;
 }
 .nav-list {
     margin: 32px;
@@ -161,4 +165,9 @@
     margin-bottom: 10px;
     color: blue;
     font-size: 18px;
+}
+.footer {
+    position: absolute;
+    bottom: -120px;
+
 }

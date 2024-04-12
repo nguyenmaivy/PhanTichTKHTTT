@@ -15,14 +15,9 @@
         <!-- partial:partials/_sidebar.html -->
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
-            <li class="nav-item ">
-              <a class="nav-link button-model">
-                <span class="menu-title">Thêm tài khoản</span>
-              </a>
-            </li>
             <li class="nav-item">
               <a class="nav-link button-model">
-                <span class="menu-title">Sửa tài khoản</span>
+                <span class="menu-title">Cấp quyền cho tài khoản</span>
               </a>
             </li>
           </ul>
@@ -31,6 +26,20 @@
         <div class="content-wrapper content-left">
           <div class="row">
             <div class="col-md-12 item-left">
+            <form id="form-tim">
+                <div class="modal_content-input-box form-group">
+                    <label for="user1-register">Nhập tài khoản cần cấp quyền</label>
+                    <input placeholder="Nhập số điện thoại" id="user1-register"
+                        class="hide-number-spinner" name="user1_register">
+                    <span class="form-message"></span>
+                </div>
+                <span class="error-login mb-2">Tài khoản không tồn tại</span>
+                <div class="modal_content-btn-box">
+                    <button type="submit" class="btn-login btn-form btn-default" id="btn-register"><span>Tìm kiếm</span></button>
+                    <button type="reset" class="btn-form btn-closee">Làm mới</button>
+                    <!-- <span><a href="index.php?chon=home"></a></span> -->
+                </div>
+            </form>
             </div>
           </div>
 
