@@ -8,9 +8,15 @@ $db = new ConnectDB();
 if(isset($_GET['search'])) {
     // Xử lý dữ liệu đầu vào từ người dùng để tránh tấn công SQL injection
     $search = $db->conn->real_escape_string($_GET['search']);
-
+    
     // Thực hiện truy vấn
-    $sql = "SELECT * FROM products WHERE name LIKE '%$search%'";
+    if (is_numeric($search)) {
+        // Nếu là số, tìm kiếm theo MASP
+        $sql = "SELECT * FROM sanpham WHERE MASP = '$search'";
+    } else {
+        // Nếu không phải là số, tìm kiếm theo TenSP
+        $sql = "SELECT * FROM sanpham WHERE TenSP LIKE '%$search%'";
+    }
     $result = $db->conn->query($sql);
 
     // Kiểm tra kết quả của truy vấn
@@ -19,10 +25,10 @@ if(isset($_GET['search'])) {
             // Hiển thị kết quả dưới dạng sản phẩm
             while($row = $result->fetch_assoc()) {
                 echo "<div>";
-                echo "<img src='" . $row["image_url"] . "' alt='" . $row["name"] . "'>";
-                echo "<p>ID: " . $row["id"]. "</p>";
-                echo "<p>Name: " . $row["name"]. "</p>";
-                echo "<p>Price: " . $row["price"]. "</p>";
+                echo "<img src='" . $row["HinhAnh"] . "' alt='" . $row["TenSP"] . "'>";
+                echo "<p>ID: " . $row["MaSP"]. "</p>";
+                echo "<p>Name: " . $row["TenSP"]. "</p>";
+                echo "<p>Price: " . $row["GiaSP"]. "</p>";
                 echo "</div>";
             }
         } else {

@@ -12,7 +12,7 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form name="form" method="register" action="pages/module/xuly.php">
+            <form name="form" method="post" action="pages/xuly.php">
                 <h1>Tạo tài khoản</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
@@ -23,13 +23,12 @@
                 <span>hoặc sử dụng thông tin của bạn để đăng kí</span>
                 <input type="text" name="userName" placeholder="Tên đăng nhập">
                 <input type="phone" name="soDienThoai" placeholder="Số điện thoại">
-                <input type="email" name="email" placeholder="Email">
                 <input type="password" name="matKhau" placeholder="Mật khẩu">
-                <button>Đăng ký</button>
+                <button type="submit" name="dangki" >Đăng ký</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form method="login" action="pages/module/xuly.php">
+            <form method="post" action="pages/xuly.php">
                 <h1>Đăng nhập</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
@@ -41,7 +40,7 @@
                 <input type="text" name="userName" placeholder="Tên đăng nhập">
                 <input type="password" name="matKhau" placeholder="Mật khẩu">
                 <a href="#">Quên mật khẩu?</a>
-                <button>Đăng nhập</button>
+                <button type="submit" name="dangnhap" >Đăng nhập</button>
             </form>
         </div>
         <div class="toggle-container">
