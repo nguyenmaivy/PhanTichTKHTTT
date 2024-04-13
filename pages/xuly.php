@@ -14,12 +14,14 @@ function themTaiKhoan($userName, $password, $phone)
 
     // Kiểm tra các trường thông tin không được để trống
     if (empty($userName) || empty($password) || empty($phone)) {
-        return "Vui lòng điền đầy đủ thông tin.";
+        echo "<script>alert('Vui lòng điền đủ thông tin.'); window.location.href = '/PhanTichTKHTTT/form.php';</script>";
+        exit();
     }
 
     // Kiểm tra số điện thoại theo regex
     if (!preg_match("/^(03|05|07|08|09)\d{8}$/", $phone)) {
-        return "Số điện thoại không hợp lệ.";
+        echo "<script>alert('Số điện thoại không hợp lệ.'); window.location.href = '/PhanTichTKHTTT/form.php';</script>";
+        exit(); 
     }
 
     // Kiểm tra xem số điện thoại đã tồn tại trong cơ sở dữ liệu chưa
@@ -30,7 +32,8 @@ function themTaiKhoan($userName, $password, $phone)
 
     // Nếu số điện thoại đã tồn tại, trả về thông báo lỗi
     if ($phoneResult->num_rows > 0) {
-        return "Số điện thoại đã được sử dụng.";
+        echo "<script>alert('Số điện thoại đã được sủ dụng.'); window.location.href = '/PhanTichTKHTTT/form.php';</script>";
+        exit();
     }
 
     // Kiểm tra xem tài khoản đã tồn tại trong cơ sở dữ liệu chưa
@@ -41,7 +44,8 @@ function themTaiKhoan($userName, $password, $phone)
 
     // Nếu tài khoản đã tồn tại, trả về thông báo lỗi
     if ($result->num_rows > 0) {
-        return "Tài khoản đã tồn tại.";
+        echo "<script>alert('Tài khoản đã tồn tại.'); window.location.href = '/PhanTichTKHTTT/form.php';</script>";
+        exit();
     }
 
     // Nếu tài khoản chưa tồn tại và số điện thoại hợp lệ, thực hiện thêm mới
@@ -58,7 +62,8 @@ function themTaiKhoan($userName, $password, $phone)
 
     
     } else {
-        return "Đăng kí thất bại: " . $stmt->error;
+        echo "<script>alert('Đăng kí thất bại: " . $stmt->error . "');</script>";
+        echo "<script>window.location.href = '/form.php';</script>";
     }
 }
 
@@ -70,7 +75,8 @@ function kiemTraDangNhap($userName, $password)
 
     // Kiểm tra các trường thông tin không được để trống
     if (empty($userName) || empty($password)) {
-        return "Vui lòng điền đầy đủ thông tin.";
+        echo "<script>alert('Vui lòng điền đầy đủ thông tin.'); window.location.href = '/PhanTichTKHTTT/form.php';</script>";
+        exit();
     }
 
     // Sử dụng prepared statement để kiểm tra thông tin đăng nhập
@@ -83,7 +89,8 @@ function kiemTraDangNhap($userName, $password)
         header("Location: /PhanTichTKHTTT/adpanel.php");
 
     } else {
-        return "Sai tên đăng nhập hoặc mật khẩu.";
+        echo "<script>alert('Sai tên đăng nhập hoặc mật khẩu.');</script>";
+        echo "<script>window.location.href = '/PhanTichTKHTTT/form.php';</script>"; 
     }
 }
 
