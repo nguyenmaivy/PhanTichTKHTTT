@@ -14,26 +14,14 @@
     <!-- Page Header End -->
     <!-- Shop Start -->
 
-    <div class="container-fluid">
-        <div class="row pb-3">
-            <!-- Product search form -->
-            <div class="col-12 pb-1">
-                
-                <?php require_once("search_form.php"); ?>
-            
-            </div>
     <div class="container-fluid pt-5">
-       <?php require("price.php") ?>
-                <!-- Price End -->
-
-                <!-- Color Start -->
+        <div class="row px-xl-5">
+            <div class="col-lg-3 col-md-12">
+                <?php require("price.php") ?>
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Thương hiệu</h5>
                     <!-- tự làm tiếp nhé -->
                 </div>
-                <!-- Color End -->
-
-                <!-- Size Start -->
                 <div class="mb-5">
                     <h5 class="font-weight-semi-bold mb-4">Size</h5>
                     <form>
@@ -64,23 +52,36 @@
 
                     </form>
                 </div>
+                </div>
+            <!-- Product search form -->
+                 
+                <!-- Price End -->
+
+                <!-- Color Start -->
+                
+                <!-- Color End -->
+
+                <!-- Size Start -->
+                
                 <!-- Size End -->
-            </div>
+        
             <!-- Shop Sidebar End -->
 
 
             <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-12">
-                <div class="row pb-3">
-                    <?php require("product_start.php"); ?>
-                    
-                        </div>
+                <div class="col-lg-9 col-md-12">
+                    <div class="row pb-3">
+                    <div class="col-12 pb-1">
+                        <?php require_once("search_form.php"); ?>
                     </div>
                     <div class="product-detail" id="productDetailContainer">
+                        <?php require("product_start.php"); ?>
                     </div>
-                    
-            <!-- Shop Product End -->
+                    </div>
+                </div>
+            </div> 
         </div>
+        <!-- Shop Product End -->
     </div>
     <div class="page-nav">
         <ul class="page-nav-list"></ul>

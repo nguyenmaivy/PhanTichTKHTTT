@@ -2,9 +2,8 @@
 echo '
 <!-- Form lọc theo giá -->
 <form method="GET" action="price_event.php">
-    <div class="row px-xl-5">
         <!-- Shop Sidebar Start -->
-        <div class="col-lg-3 col-md-12">
+        
             <!-- Price Start -->
             <div class="border-bottom mb-4 pb-4">
                 <h5 class="font-weight-semi-bold mb-4">Lọc theo giá</h5>
@@ -41,7 +40,6 @@ echo '
                 <button type="submit" class="btn btn-primary">Submit</button> <!-- Submit button -->
             </div>
             <!-- Price End -->
-        </div>
-    </div>
+        
 </form>';
 ?>

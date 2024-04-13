@@ -11,7 +11,7 @@ $(document).ready(function(){
                 break;
             case 'Sản phẩm':
                 root.load("./pages/shop.php", function() {
-                    load_DSSP();
+                    // load_DSSP();
                     $(e.target).addClass("active");
                 });
                 break;
@@ -68,6 +68,7 @@ function load_DSSP(){
                     </div>
                 </div>
             `;
+            
         }
         return html;
     }
