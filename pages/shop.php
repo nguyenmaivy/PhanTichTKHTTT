@@ -1,7 +1,26 @@
 
 
+
+<div class="container-fluid">
+        <div class="row bg-secondary py-2 px-xl-5">
+            <!-- Topbar content -->
+        </div>
+        <div class="row align-items-center py-3 px-xl-5">
+            <!-- More topbar content -->
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row border-top px-xl-5">
+            <!-- Navbar content -->
+        </div>
+    </div>
+    <div class="container-fluid bg-secondary mb-5">
+        <!-- Page header content -->
+    </div>
+   
+
 <!-- Page Header Start -->
-<div class="container-fluid bg-secondary mb-5">
+<!-- <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Tất cả sản phẩm</h1>
             <div class="d-inline-flex">
@@ -10,16 +29,17 @@
                 <p class="m-0">Sản phẩm</p>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Page Header End -->
     <!-- Shop Start -->
 
     <div class="container-fluid">
         <div class="row pb-3">
             <!-- Product search form -->
+            <?php require_once("search_form.php"); ?>
             <div class="col-12 pb-1">
                 
-                <?php require_once("search_form.php"); ?>
+                
             
             </div>
     <div class="container-fluid pt-5">
@@ -72,7 +92,7 @@
             <!-- Shop Product Start -->
             <div class="col-lg-9 col-md-12">
                 <div class="row pb-3">
-                    <?php require("product_start.php"); ?>
+                <?php require("product_start.php"); ?>
                     
                         </div>
                     </div>
@@ -92,3 +112,7 @@
             <div class="modal-container mdl-cnt" id="product-detail-content">
             </div>
         </div>
+
+
+
+   
