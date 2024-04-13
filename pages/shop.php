@@ -36,9 +36,12 @@
     <div class="container-fluid">
         <div class="row pb-3">
             <!-- Product search form -->
-            <?php require_once("search_form.php"); ?>
-            <div class="col-12 pb-1">
                 
+                
+                
+            
+            </div>
+            
                 
             
             </div>
@@ -97,17 +100,17 @@
 
 
             <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-12">
-                <div class="row pb-3">
-                <?php require("product_start.php"); ?>
-                    
+                <div class="col-lg-9 col-md-12">
+                    <div class="row pb-3">
+                        <div class="col-12 pb-1">
+                            <?php require_once("search_form.php"); ?>
+                        </div>
+                        <div class="product-detail" id="productDetailContainer">
+                            <?php require("product_start.php"); ?>
                         </div>
                     </div>
-                    <div class="product-detail" id="productDetailContainer">
-                        <?php require("product_start.php"); ?>
-                    </div>
-                    </div>
                 </div>
+            </div>
             </div> 
         </div>
         <!-- Shop Product End -->
