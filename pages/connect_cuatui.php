@@ -3,7 +3,7 @@ class ConnectDB{
     private $host = 'localhost';
     private $user = 'root';
     private $password = '';
-    private $database = 'my_database';
+    private $database = 'mypham';
     public $conn;
 
     public function __construct(){

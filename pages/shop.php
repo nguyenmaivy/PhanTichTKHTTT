@@ -1,4 +1,5 @@
 
+
 <!-- Page Header Start -->
 <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
@@ -72,9 +73,7 @@
             <div class="col-lg-9 col-md-12">
                 <div class="row pb-3">
                     <?php require("product_start.php"); ?>
-                    <?php require("product_start.php"); ?>
-                    <?php require("product_start.php"); ?>
-                    <?php require("product_start.php"); ?>
+                    
                         </div>
                     </div>
                     <div class="product-detail" id="productDetailContainer">
