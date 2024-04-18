@@ -37,7 +37,7 @@
                     <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
                 <span>hoặc sử dụng tên đăng nhập và mật khẩu của bạn</span>
-                <input type="text" name="userName" placeholder="Tên đăng nhập">
+                <input type="phone" name="soDienThoai" placeholder="Số điện thoại">
                 <input type="password" name="matKhau" placeholder="Mật khẩu">
                 <a href="#">Quên mật khẩu?</a>
                 <button type="submit" name="dangnhap" >Đăng nhập</button>

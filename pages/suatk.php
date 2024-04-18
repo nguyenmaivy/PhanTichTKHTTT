@@ -36,3 +36,4 @@
         </div>
 </form>
 </div>
+<script src="./js/suatk.js"></script>

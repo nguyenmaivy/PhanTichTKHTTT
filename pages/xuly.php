@@ -58,7 +58,7 @@ function themTaiKhoan($userName, $password, $phone)
     $stmt->bind_param("sssss", $userName, $tenNhomQuyen, $password, $phone, $trangThai);
 
     if ($stmt->execute()) {
-        header("Location: /PhanTichTKHTTT/adpanel.php");
+        header("Location: /PhanTichTKHTTT/index.php");
 
     
     } else {
@@ -68,26 +68,34 @@ function themTaiKhoan($userName, $password, $phone)
 }
 
 
-// Hàm kiểm tra thông tin đăng nhập
-function kiemTraDangNhap($userName, $password)
+function kiemTraDangNhap($phone, $password)
 {
     global $conn;
 
     // Kiểm tra các trường thông tin không được để trống
-    if (empty($userName) || empty($password)) {
+    if (empty($phone) || empty($password)) {
         echo "<script>alert('Vui lòng điền đầy đủ thông tin.'); window.location.href = '/PhanTichTKHTTT/form.php';</script>";
         exit();
     }
 
     // Sử dụng prepared statement để kiểm tra thông tin đăng nhập
-    $stmt = $conn->conn->prepare("SELECT * FROM taikhoan WHERE UserName=? AND MatKhau=?");
-    $stmt->bind_param("ss", $userName, $password);
+    $stmt = $conn->conn->prepare("SELECT * FROM taikhoan WHERE SDT=? AND MatKhau=?");
+    $stmt->bind_param("ss", $phone, $password);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        header("Location: /PhanTichTKHTTT/adpanel.php");
+        // Lấy thông tin nhóm quyền từ kết quả truy vấn
+        $row = $result->fetch_assoc();
+        $tenNhomQuyen = $row['TenNhomQuyen'];
 
+        if ($tenNhomQuyen === 'KH') {
+            // Nhóm quyền là "KH" (Khách hàng), chuyển hướng đến trang index.php
+            header("Location: /PhanTichTKHTTT/index.php");
+        } else {
+            // Nhóm quyền khác, chuyển hướng đến trang adpanel.php
+            header("Location: /PhanTichTKHTTT/adpanel.php");
+        }
     } else {
         echo "<script>alert('Sai tên đăng nhập hoặc mật khẩu.');</script>";
         echo "<script>window.location.href = '/PhanTichTKHTTT/form.php';</script>"; 
@@ -103,10 +111,10 @@ if (isset($_POST['dangki'])) {
     $result = themTaiKhoan($userName, $password, $phone);
     echo $result;
 } elseif (isset($_POST['dangnhap'])) {
-    $userName = $_POST['userName'];
+    $phone = $_POST['soDienThoai'];
     $password = $_POST['matKhau'];
 
-    $result = kiemTraDangNhap($userName, $password);
+    $result = kiemTraDangNhap($phone, $password);
     echo $result;
 }
 

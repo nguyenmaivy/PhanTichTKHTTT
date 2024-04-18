@@ -12,6 +12,13 @@ class sanpham{
         $this->conn->disconnect();
         return $result;
     }
+    function dssanpham(){
+        $this->conn->constructor();
+        $strSQL="SELECT * FROM `sanpham` WHERE 1";
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
+    }
     
 }
 class banhang{
@@ -38,6 +45,20 @@ class banhang{
         LEFT JOIN donhang ON donhang.MaDonHang=chitietdonhang.MaDonHang
         WHERE  donhang.MaDonHang='".$madon."'";
         
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
+    }
+    function timtheoSDT($sdt){
+        $this->conn->constructor();
+        $strSQL="SELECT * FROM `donhang` WHERE `MTaiKhoan`='".$sdt."'";
+        $result=$this->conn->excuteSQL($strSQL);
+        $this->conn->disconnect();
+        return $result;
+    }
+    function timtheoID($id){
+        $this->conn->constructor();
+        $strSQL="SELECT * FROM `donhang` WHERE `MaDonHang`='".$id."'";
         $result=$this->conn->excuteSQL($strSQL);
         $this->conn->disconnect();
         return $result;
@@ -90,5 +111,10 @@ class taikhoan{
         $result=$this->conn->excuteSQL($strSQL);
         return $result;
     }
-
+    function suaquyen($data){
+        $this->conn->constructor();
+        $strSQL="UPDATE `taikhoan` SET `TenNhomQuyen`='".$data->quyen."' WHERE `SDT`='".$data->user1_register."'";
+        $result=$this->conn->excuteSQL($strSQL);
+        return $result;
+    }
 }

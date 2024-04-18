@@ -43,4 +43,10 @@
             echo 1;
         }
     }
+    else if(isset($_REQUEST['suaquyen'])){
+        $data=$_REQUEST['data'];
+        $data=json_decode($data);
+        $result=$taikhoan->suaquyen($data);
+        echo $result;
+    }
 ?>

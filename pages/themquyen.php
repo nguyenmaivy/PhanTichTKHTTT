@@ -7,8 +7,8 @@
             <span class="form-message"></span>
         </div>
         <div class="modal_content-input-box form-group">
-            <label for="username-register">Tên đăng ký</label>
-            <input type="text" placeholder="Nhập tên đăng ký" id="username-register" name="username_register">
+            <label for="username-register" >Tên đăng ký</label>
+            <input type="text" placeholder="Nhập tên đăng ký" id="username-register" name="username_register" disabled>
             <span class="form-message"></span>
         </div>
         <div class="modal_content-input-box form-group">
@@ -17,8 +17,9 @@
             <!-- <span class="form-message"></span> -->
             <select name="quyen" id="quyen">
                 <option value="KH">Khách hàng</option>
-                <option value="NVBH">Nhân viên bán hàng</option>
-                <option value="NVK">Nhân viên quản lý kho</option>
+                <option value="QLBH">Nhân viên bán hàng</option>
+                <option value="QLK">Nhân viên quản lý kho</option>
+                <option value="Admin">Admin</option>
             </select>
         </div>
         <div class="modal_content-btn-box">

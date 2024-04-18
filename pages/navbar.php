@@ -466,8 +466,7 @@
                             <div class="nav-item nav-link nav-top">Góp ý</div>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Đăng nhập</a>
-                            <a href="" class="nav-item nav-link">Đăng ký</a>
+                            <a href="./form.php" class="nav-item nav-link">Đăng nhập</a>
                         </div>
                     </div>
                 </nav>

@@ -10,27 +10,40 @@
         $result = $price . $result;
         return $result;
     }
-    include './connect.php';
+    // include './connect.php';
+    include './controller.php';
     $conn=new connect;
+    $banhang=new banhang;
     $conn->constructor();
     $data="";
     if(!isset($_GET['chon'])){
-        $strtmp="";
-        if(isset($_GET['from'])){
-            $from=$_GET['from'];
-            $to=$_GET['to'];
-            $strtmp="AND NgayDatHang BETWEEN '".$from."' AND '".$to."'";
+        global $result;
+        if(isset($_REQUEST['SDT'])){
+            $SDT=$_REQUEST['SDT'];
+            $result=$banhang->timtheoSDT($SDT);
+            if(mysqli_num_rows($result)==0){
+                $result=$banhang->timtheoID($SDT);
+            }
         }
-        $strSQL="SELECT * FROM `donhang` WHERE TrangThaiDonHang='0' ".(!isset($_GET['status']) ? "OR TrangThaiDonHang='1'" : "").$strtmp;
-        $result=$conn->excuteSQL($strSQL);
+        else {
+            $strtmp="";
+            if(isset($_GET['from'])){
+                $from=$_GET['from'];
+                $to=$_GET['to'];
+                $strtmp="AND NgayDatHang BETWEEN '".$from."' AND '".$to."'";
+            }
+            $strSQL="SELECT * FROM `donhang` WHERE TrangThaiDonHang='0' ".(!isset($_GET['status']) ? "OR TrangThaiDonHang='1'" : "").$strtmp;
+            $result=$conn->excuteSQL($strSQL);
+        }
         $data="<div class='table-content'><nav aria-label='breadcrumb'>
                         <ol class='breadcrumb'>
                         <li class='breadcrumb-item active'aria-current='page'>Đơn hàng</li>
                         </ol>
                     </nav>
-                    <label for='form-time'>Từ ngày<input type='date' id='from-time'></label>
+                    <div class='float-start'><label for='form-time'>Từ ngày<input type='date' id='from-time'></label>
                     <label for='to-time'>Đến ngày<input type='date' id='to-time'></label>
                     <button onclick='handTimeDon()'>Lọc</button>
+                    </div><input class='form-control me-1 search-donhang' type='search' placeholder='Nhập SĐT hoặc ID đơn' style='float: right;width: inherit' onkeypress='timdonhang(event)'>
                     <table class='table table-striped'>
                     <thead><tr><th>Mã đơn hàng</th>
                     <th>Ngày đặt hàng</th>
@@ -53,6 +66,7 @@
                 </tr>";
             }
         }
+        else $data.="<tr><td>Không có đơn hàng nào phù hợp</td></tr>";
         $data.="</tbody>
         </table> </div>";
         echo $data;

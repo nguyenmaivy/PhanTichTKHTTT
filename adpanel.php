@@ -158,7 +158,7 @@
     ?>
     <script src="./js/vadidation.js"></script>
     <script src="./js/jquery.min.js"></script>
-    <script src="./js/suatk.js"></script>
+    
     <script src="./js/adpanel.js"></script>
 </body>
 </html>

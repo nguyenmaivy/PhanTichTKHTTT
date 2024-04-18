@@ -22,7 +22,6 @@ $(".root").load("pages/admin.php",function(){
                                 var inputE=document.querySelector('form').querySelectorAll("[name]")
                                 var formE=document.querySelector("#form_quyen")
                                 console.log(formE)
-                                
                                 var tmp={
                                     user1_register:data.SDT,
                                     username_register:data.UserName,
@@ -35,10 +34,23 @@ $(".root").load("pages/admin.php",function(){
                                 formE.onsubmit=function(e){
                                     e.preventDefault()
                                     var data={}
+                                    const quyenE=$("#quyen").val();
                                     Array.from(inputE).forEach((input)=>{
                                         data[input.name]=input.value
                                     })
-                                    console.log(data)
+                                    var xhr=new XMLHttpRequest();
+                                    xhr.open("POST","./pages/module/taikhoan.php?suaquyen");
+                                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                                    xhr.send("data="+JSON.stringify(data));
+                                    xhr.onload=function(){
+                                        if(xhr.status>=200 &&xhr.status<300){
+                                            if(xhr.responseText==1){
+                                                alert("Thay đổi thành công")
+                                                location.reload(false)
+                                            }
+                                        }
+                                    }
+
                                 }
                             })
                         }

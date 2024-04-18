@@ -27,8 +27,7 @@
     </style>
 </head>
 <body>
-    <div id="root" >
-    </div>
+    <div id="root" ></div>
     
     <script script src="./js/vadidation.js"></script>
     <script src="./js/jquery.min.js"></script>

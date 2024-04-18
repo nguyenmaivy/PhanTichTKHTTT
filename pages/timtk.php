@@ -39,6 +39,7 @@
                 if (xhr.status >= 200 && xhr.status < 300) {
                     if(xhr.responseText){
                         ttTK=JSON.parse(xhr.responseText)
+                        console.log(ttTK)
                         if(ttTK.status==1){
                             $(".model-content").load("./pages/suatk.php")
                         }

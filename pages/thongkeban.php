@@ -70,7 +70,7 @@
             $array=[];
             while($row=mysqli_fetch_assoc($result)){
               if(!array_key_exists($row['MaSP'],$array)){
-                $array[$row['MaSP']]=$row['MaSP'];
+                $array[$row['MaSP']]=$row['SoLuong'];
               }
               else {
                 $array[$row['MaSP']]+=$row['SoLuong'];

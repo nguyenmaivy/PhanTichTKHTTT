@@ -68,6 +68,7 @@ function qlTaiKhoan(){
         }
         else if(e.target.innerText=="Sửa tài khoản"){
             $(this).addClass("active")
+            console.log("cmm")
             $(".model-content").load("./pages/timtk.php?status=1")
         }
         else if(e.target.innerText=="Xóa tài khoản"){
@@ -164,9 +165,22 @@ function handTimeDon(){
         })
     }
 }
+function timdonhang(event){
+    
+    if(event.key=="Enter"){
+        $.post("./pages/module/loaddon.php?timdon",
+        {
+          SDT: $(".search-donhang").val(),
+        },
+        function(data,status){
+            $(".model-content-hd").html(data)
+            viewDuyet()
+        });
+    }
+}
 function handTimeTK(){
-    var from = $("#from-time").val();
-    var to = $("#to-time").val();
+    var from = $("#from-time-tk").val();
+    var to = $("#to-time-tk").val();
         $(".baocao").load("./pages/thongkeban.php?khoang&from="+from+"&to="+to,function(){
         })
 }
@@ -186,8 +200,8 @@ function xemThongKe(){
         }
         else if(e.target.innerText=="Báo cáo theo khoảng thời gian"){
             $(this).addClass("active")
-            $(".model-content-tkbh").html(`<label for=form-time'>Từ ngày<input type='date' id='from-time'></label>
-            <label for='to-time'>Đến ngày<input type='date' id='to-time'></label>
+            $(".model-content-tkbh").html(`<label for=form-time-tk'>Từ ngày<input type='date' id='from-time-tk'></label>
+            <label for='to-time-tk'>Đến ngày<input type='date' id='to-time-tk'></label>
             <button onclick='handTimeTK()'>Lọc</button><div class="baocao"></div>`)
         }
     })

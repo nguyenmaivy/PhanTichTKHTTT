@@ -57,6 +57,7 @@
                         </tr>";
             $stt=2;
             $tongtien=0;
+            $result->data_seek(0);
             while($row=mysqli_fetch_assoc($result)){
                 $thanhtien=$row['GiaCa']*$row['SoLuong'];
                 $tongtien+=$thanhtien;
