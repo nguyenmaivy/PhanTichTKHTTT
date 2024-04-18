@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/adpanel.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="css/styleAdmin.css">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <title>Document</title>
@@ -61,6 +62,7 @@
                         <li class="list-group-item model-item">Xóa tài khoản</li>
                     </ul>
                     </div>
+                    
                     <div class="model-content">
                     </div>
                 </div>
@@ -82,6 +84,18 @@
                     </ul>
                     </div>
                     <div class="model-content-tkbh mt-5">
+                    </div>
+                </div>
+                <div class="model-qlkho model-right">
+                    <!-- <div class="top-menu">
+                    <ul class="list-group list-group-horizontal menu-container">
+                        <li class="list-group-item model-item">Danh sách sản phẩm</li>
+                        <li class="list-group-item model-item">Thêm sản phẩm</li>
+                        <li class="list-group-item model-item">Sửa sản phẩm</li>
+                        <li class="list-group-item model-item">Xóa sản phẩm</li>
+                    </ul>
+                    </div> -->
+                    <div class="model-content-kho">
                     </div>
                 </div>
                 <!-- <div class="model-in model-right">

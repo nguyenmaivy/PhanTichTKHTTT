@@ -11,7 +11,7 @@ function Validator(option){
         }
     }
     function validate(inputElement,rule){
-        const errorElement=getParent(inputElement,'.form-group').querySelector(option.errorElement)
+        const errorElement=option?.errorElement ? getParent(inputElement,'.form-group').querySelector(option?.errorElement): ""
         var messErorr
         var rules=selectorRules[rule.selector]
         for(var i=0;i<rules.length;i++){
@@ -29,12 +29,12 @@ function Validator(option){
             }
         }
         if(messErorr){
-            errorElement.innerHTML=messErorr
+            option?.errorElement ? errorElement.innerHTML=messErorr: "";
             getParent(inputElement,'.form-group').classList.add('invalid')
         }
         else {
             getParent(inputElement,'.form-group').classList.remove('invalid')
-            errorElement.innerHTML=''
+            option?.errorElement ? errorElement.innerHTML="": "";
         }
         return messErorr
     }
@@ -130,8 +130,10 @@ function Validator(option){
             Array.from(inputElements).forEach((inputElement) =>{
                 inputElement.addEventListener('input', function() {
                     enableSubmit()
-                    const errorElement=getParent(inputElement,'.form-group').querySelector(option.errorElement)
-                    errorElement.innerText=''
+                    if(option?.errorElement){
+                        const errorElement=getParent(inputElement,'.form-group').querySelector(option?.errorElement)
+                        errorElement.innerText=''
+                    }
                     getParent(inputElement,'.form-group').classList.remove('invalid')
                     // validate(inputElement, rule);
                 });

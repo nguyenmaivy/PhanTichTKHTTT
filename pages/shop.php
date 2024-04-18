@@ -61,10 +61,10 @@
                 <!-- Price End -->
 
                 <!-- Color Start -->
-                <div class="border-bottom mb-4 pb-4">
+                <!-- <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Thương hiệu</h5>
-                    <!-- tự làm tiếp nhé -->
-                </div>
+                    tự làm tiếp nhé
+                </div> -->
                 <!-- Color End -->
 
                 <!-- Size Start -->
