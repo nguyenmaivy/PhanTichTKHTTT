@@ -1,5 +1,26 @@
+
+
+
+<div class="container-fluid">
+        <div class="row bg-secondary py-2 px-xl-5">
+            <!-- Topbar content -->
+        </div>
+        <div class="row align-items-center py-3 px-xl-5">
+            <!-- More topbar content -->
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row border-top px-xl-5">
+            <!-- Navbar content -->
+        </div>
+    </div>
+    <div class="container-fluid bg-secondary mb-5">
+        <!-- Page header content -->
+    </div>
+   
+
 <!-- Page Header Start -->
-<div class="container-fluid bg-secondary mb-5">
+<!-- <div class="container-fluid bg-secondary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Tất cả sản phẩm</h1>
             <div class="d-inline-flex">
@@ -8,15 +29,26 @@
                 <p class="m-0">Sản phẩm</p>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Page Header End -->
-
-
     <!-- Shop Start -->
+
+    <div class="container-fluid">
+        <div class="row pb-3">
+            <!-- Product search form -->
+                
+                
+                
+            
+            </div>
+            
+                
+            
+            </div>
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
-            <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-12">
+<<<<<<< HEAD
                 <!-- Price Start -->
                 <div class="border-bottom mb-4 pb-4">
                     <h5 class="font-weight-semi-bold mb-4">Lọc theo giá</h5>
@@ -68,6 +100,13 @@
                 <!-- Color End -->
 
                 <!-- Size Start -->
+=======
+                <?php require("price.php") ?>
+                <div class="border-bottom mb-4 pb-4">
+                    <h5 class="font-weight-semi-bold mb-4">Thương hiệu</h5>
+                    <!-- tự làm tiếp nhé -->
+                </div>
+>>>>>>> ff0772969b0c4ba2c8999052081de6d02bbf03bb
                 <div class="mb-5">
                     <h5 class="font-weight-semi-bold mb-4">Size</h5>
                     <form>
@@ -98,44 +137,37 @@
 
                     </form>
                 </div>
+                </div>
+            <!-- Product search form -->
+                 
+                <!-- Price End -->
+
+                <!-- Color Start -->
+                
+                <!-- Color End -->
+
+                <!-- Size Start -->
+                
                 <!-- Size End -->
-            </div>
+        
             <!-- Shop Sidebar End -->
 
 
             <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-12">
-                <div class="row pb-3">
-                    <div class="col-12 pb-1">
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search by name">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text bg-transparent text-primary">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="dropdown ml-4">
-                                <button class="btn border dropdown-toggle" type="button" id="triggerId"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Sắp xếp
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                    <a class="dropdown-item" href="#">Mới nhất</a>
-                                    <a class="dropdown-item" href="#">Phổ biến</a>
-                                    <a class="dropdown-item" href="#">Đánh giá</a>
-                                </div>
-                            </div>
+                <div class="col-lg-9 col-md-12">
+                    <div class="row pb-3">
+                        <div class="col-12 pb-1">
+                            <?php require_once("search_form.php"); ?>
+                        </div>
+                        <div class="product-detail" id="productDetailContainer">
+                            <?php require("product_start.php"); ?>
                         </div>
                     </div>
-                    <div class="product-detail" id="productDetailContainer">
-                    </div>
-                    
-            <!-- Shop Product End -->
+                </div>
+            </div>
+            </div> 
         </div>
+        <!-- Shop Product End -->
     </div>
     <div class="page-nav">
         <ul class="page-nav-list"></ul>
@@ -147,3 +179,7 @@
             <div class="modal-container mdl-cnt" id="product-detail-content">
             </div>
         </div>
+
+
+
+   
