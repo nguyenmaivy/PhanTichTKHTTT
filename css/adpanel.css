@@ -11,7 +11,7 @@ body {
     /* width: 80%; */
 }
 #rapper-admin {
-    width: 90%;
+    /* width: 90%; */
     margin-right: auto;
     margin-left: auto;
     /* height: 700px; */
@@ -178,4 +178,8 @@ body {
 }
 td button {
     margin-bottom: 5px;
+}
+.item-nhapkho.pannel {
+    /* height: 350px; */
+    display: none;  
 }

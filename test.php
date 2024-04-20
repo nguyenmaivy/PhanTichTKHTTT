@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belleza | Mỹ phẩm & phục hồi chức năng</title>
-    <link rel="stylesheet" href="./css/test.css">
+    <title>Document</title>
 </head>
+
 <body>
-    <div class="modal">
-    <button class="modal-close">X</button>
-    <div class="modal-container">
-    <div class="modal-header">
-        <img class="product-image" src="./img/products/SanPhamChamSocDa/DermAfirm.jpg" alt="">
-        </div>
-        <div class="modal-body">
-            <h2 class="product-title">DermAfirm</h2>
-            <div class="product-control">
-                <div class="priceBox">
-                    <span class="current-price">100.000</span>
+    <div class="container">
+        <div class="col-md-12">
+            <form id="submit_form" action="ajax_action.php" method="POST">
+                <div class="form-group">
+                    <label>Chọn ảnh</label>
+                    <input type="file" name="file" id="image_file">
+                    <span class="help-block">Cho phép file ȧnh jpg, jpeg, png, gif</span>
                 </div>
-                <div class="buttons_added">
-                    <input class="minus is-form" type="button" value="-" onclick="decreasingNumber(this)">
-                    <input class="input-qty" max="100" min="1" name="" type="number" value="1">
-                    <input class="plus is-form" type="button" value="+" onclick="increasingNumber(this)">
-                </div>
-            </div>
-        </div>
-        <div class="notebox">
-                <p class="notebox-title">Ghi chú</p>
-                <textarea class="text-note" id="popup-detail-note" placeholder="Nhập thông tin cần lưu ý..."></textarea>
-        </div>
-        <div class="modal-footer">
-            <div class="price-total">
-                <span class="thanhtien">Thành tiền</span>
-                <span class="price">100.000</span>
-            </div>
-            <div class="modal-footer-control">
-                <button class="button-dathangngay" data-product="${infoProduct.id}">Đặt hàng ngay</button>
-                <button class="button-dat" id="add-cart" onclick="animationCart()"><i class="fa-light fa-basket-shopping">thêm giỏ hàng</i></button>
+                <input type="submit" name="upload_button" class="btn btn-info" value="Upload" />
+            </form>
+            <br />
+            <h3 align="center">Xem trước ȧnh</h3>
+            <div id="image_preview">
             </div>
         </div>
     </div>
-</div>
+    <script>
+        $(document).ready(function(){
+            $('#submit_form').on('submit',function(e){
+                e.preventDefault();
+                $.ajax({
+                    url:"ajax_action.php",
+                    method:'POST',
+                    data:new FormData(this),
+                    contentType:false,
+                    processData: false,
+                    success:function(data)
+                    {
+                        $('#image_preview').html(data);
+                        $('#image_file').val('');
+                    }
+                });
+            });
+            
+        });
+    </script>
+
 </body>
+
 </html>

@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="./css/adpanel.css">
     <link rel="stylesheet" href="./fonts/themify-icons-font/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="css/styleAdmin.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.4/css/dataTables.bootstrap5.css">
+    
     <title>Document</title>
 </head>
 <body>
@@ -61,6 +61,7 @@
                         <li class="list-group-item model-item">Xóa tài khoản</li>
                     </ul>
                     </div>
+                    
                     <div class="model-content">
                     </div>
                 </div>
@@ -83,6 +84,12 @@
                     </div>
                     <div class="model-content-tkbh mt-5">
                     </div>
+                </div>
+                <div class="model-qlkho model-right">
+                   
+                </div>
+                <div class="model-thongkenhap model-right">
+                   
                 </div>
                 <!-- <div class="model-in model-right">
                     <div class="top-menu">
@@ -158,7 +165,10 @@
     ?>
     <script src="./js/vadidation.js"></script>
     <script src="./js/jquery.min.js"></script>
-    
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.4/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.4/js/dataTables.bootstrap5.js"></script>
     <script src="./js/adpanel.js"></script>
+    
 </body>
 </html>
