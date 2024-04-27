@@ -1,5 +1,6 @@
 <?php
 require_once("sanpham.php");
+require_once("product_actions.php");
 
 // Khởi tạo kết nối
 $db = new ConnectDB();
@@ -24,12 +25,27 @@ if(isset($_GET['search'])) {
         if ($result->num_rows > 0) {
             // Hiển thị kết quả dưới dạng sản phẩm
             while($row = $result->fetch_assoc()) {
-                echo "<div>";
-                echo "<img src='" . $row["HinhAnh"] . "' alt='" . $row["TenSP"] . "'>";
-                echo "<p>ID: " . $row["MaSP"]. "</p>";
-                echo "<p>Name: " . $row["TenSP"]. "</p>";
-                echo "<p>Price: " . $row["GiaSP"]. "</p>";
-                echo "</div>";
+?>
+                <div>
+                    <img src='<?php echo $row["HinhAnh"]; ?>' alt='<?php echo $row["TenSP"]; ?>'>
+                    <p>ID: <?php echo $row["MaSP"]; ?></p>
+                    <p>Name: <?php echo $row["TenSP"]; ?></p>
+                    <p>Price: <?php echo $row["GiaSP"]; ?></p>
+                    <div class="card-footer d-flex justify-content-between bg-light border">
+                        <!-- Nút Xem Nhanh -->
+                        <?php echo showQuickViewButton($row['MaSP']); ?>
+
+                        <!-- Nút Thêm vào Giỏ Hàng -->
+                        <form class="addcart-form" method="POST" action="cart.php">
+                            <input type="hidden" name="MaSP" value="<?php echo $row['MaSP']; ?>">
+                            <input type="hidden" name="HinhAnh" value="<?php echo $row['HinhAnh']; ?>">
+                            <input type="hidden" name="TenSP" value="<?php echo $row['TenSP']; ?>">
+                            <input type="hidden" name="GiaSP" value="<?php echo $row['GiaSP']; ?>">
+                            <button type="submit" name="addcart">Thêm vào giỏ hàng</button>
+                        </form>
+                    </div>
+                </div>
+<?php
             }
         } else {
             echo "No results found.";
