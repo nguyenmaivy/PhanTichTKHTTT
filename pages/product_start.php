@@ -1,4 +1,3 @@
-
 <?php
 require_once("sanpham.php");
 require_once("product_actions.php");
@@ -6,10 +5,24 @@ require_once("product_actions.php");
 // Khởi tạo kết nối
 $db = new ConnectDB();
 
-?>
-<?php
-// Gọi hàm fetchSanpham để lấy danh sách sản phẩm từ cơ sở dữ liệu
-$sanpham = fetchSanpham($db->conn);
+// Số sản phẩm trên mỗi trang
+$productsPerPage = 6;
+
+// Trang hiện tại
+$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// Tính offset
+$offset = ($current_page - 1) * $productsPerPage;
+
+// Gọi hàm fetchSanpham để lấy danh sách sản phẩm từ cơ sở dữ liệu cho trang hiện tại
+$sanpham = fetchSanphamphantrang($db->conn, $offset, $productsPerPage);
+
+// Tổng số sản phẩm
+$totalProducts = countAllSanpham($db->conn);
+
+// Tính tổng số trang
+$totalPages = ceil($totalProducts / $productsPerPage);
+
 ?>
 
 <!-- Hiển thị danh sách sản phẩm từ cơ sở dữ liệu -->
@@ -26,7 +39,6 @@ $sanpham = fetchSanpham($db->conn);
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between bg-light border">
-                 
                 <!-- Nút Thêm vào Giỏ Hàng -->
                 <form class="addcart-form" method="POST" action="cart.php">
                     <input type="hidden" name="MaSP" value="<?php echo $sp['MaSP']; ?>">
@@ -35,12 +47,22 @@ $sanpham = fetchSanpham($db->conn);
                     <input type="hidden" name="GiaSP" value="<?php echo $sp['GiaSP']; ?>">
                     <button type="submit" name="addcart">Thêm vào giỏ hàng</button>
                 </form>
-                 <!-- Nút Xem Nhanh -->
-                 <?php echo showQuickViewButton($sp['MaSP']); ?>
-
+                <!-- Nút Xem Nhanh -->
+                <?php echo showQuickViewButton($sp['MaSP']); ?>
             </div>
         </div>
     </div>
 <?php endforeach; ?>
 
-
+<!-- Phần phân trang -->
+<div class="pagination">
+    <?php if ($current_page > 1): ?>
+        <a href="?page=<?php echo ($current_page - 1); ?>">Previous</a>
+    <?php endif; ?>
+    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?page=<?php echo $i; ?>" <?php if ($i == $current_page) echo 'class="active"'; ?>><?php echo $i; ?></a>
+    <?php endfor; ?>
+    <?php if ($current_page < $totalPages): ?>
+        <a href="?page=<?php echo ($current_page + 1); ?>">Next</a>
+    <?php endif; ?>
+</div>
