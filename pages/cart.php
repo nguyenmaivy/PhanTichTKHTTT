@@ -1,182 +1,128 @@
-<!-- Page Header Start -->
-<div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Tất cả sản phẩm</h1>
-            <div class="d-inline-flex">
-                <p class="m-0"><a href="">Trang chủ</a></p>
-                <p class="m-0 px-2">-</p>
-                <p class="m-0">Giỏ hàng</p>
-            </div>
-        </div>
-    </div>
-    <!-- Page Header End -->
+<?php
+session_start(); // Bắt đầu phiên làm việc nếu chưa được bắt đầu
 
+// Kiểm tra nếu biến phiên 'cart' tồn tại, nếu không, khởi tạo nó là một mảng rỗng
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
 
-    <!-- Cart Start -->
-    <div class="container-fluid pt-5">
-        <div class="row px-xl-5">
-            <div class="col-lg-8 table-responsive mb-5">
-                <table class="table table-bordered text-center mb-0">
-                    <thead class="bg-secondary text-dark">
-                        <tr>
-                            <th>Sản phẩm</th>
-                            <th>Giá</th>
-                            <th>Số lượng</th>
-                            <th>Tổng</th>
-                            <th>Hủy bỏ</th>
-                        </tr>
-                    </thead>
-                    <tbody class="align-middle">
-                        <tr>
-                            <td class="align-middle"><img src="#" alt="" style="width: 50px;"> Tên sản phẩm</td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
-                                        value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
-                                        class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="#" alt="" style="width: 50px;"> Tên sản phẩm</td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
-                                        value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
-                                        class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="#" alt="" style="width: 50px;">Tên sản phẩm</td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
-                                        value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
-                                        class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="#" alt="" style="width: 50px;"> Tên sản phẩm</td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
-                                        value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
-                                        class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="#" alt="" style="width: 50px;"> Tên sản phẩm</td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center"
-                                        value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle">150</td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i
-                                        class="fa fa-times"></i></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-lg-4">
-                <form class="mb-5" action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control p-4" placeholder="Mã giảm giá">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary">Áp dụng mã</button>
-                        </div>
-                    </div>
-                </form>
-                <div class="card border-secondary mb-5">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Mua hàng </h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Tên sản phẩm</h6>
-                            <h6 class="font-weight-medium">150</h6>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Tên sản phẩm</h6>
-                            <h6 class="font-weight-medium">10</h6>
-                        </div>
-                    </div>
-                    <div class="card-footer border-secondary bg-transparent">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Tổng tiền</h5>
-                            <h5 class="font-weight-bold">160</h5>
-                        </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Đặt hàng</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Cart End -->
+// Kiểm tra nếu nút 'addcart' được nhấn
+if (isset($_POST['addcart'])) {
+    // Tạo một mảng để lưu trữ chi tiết sản phẩm
+    $product = array(
+        'MaSP' => $_POST['MaSP'],
+        'HinhAnh' => $_POST['HinhAnh'],
+        'TenSP' => $_POST['TenSP'],
+        'GiaSP' => $_POST['GiaSP']
+    );
+
+    // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+    $found = false;
+    foreach ($_SESSION['cart'] as $key => $item) {
+        if ($item['MaSP'] === $product['MaSP']) {
+            // Nếu tìm thấy, tăng số lượng và cập nhật giỏ hàng
+            $_SESSION['cart'][$key]['SoLuong'] += 1;
+            $found = true;
+            break;
+        }
+    }
+
+    // Nếu không tìm thấy, thêm sản phẩm vào giỏ hàng
+    if (!$found) {
+        $product['SoLuong'] = 1; // Khởi tạo số lượng
+        $_SESSION['cart'][] = $product;
+    }
+
+    // Trở về trang sản phẩm sau khi thêm vào giỏ hàng
+    header("Location: shop.php");
+    exit();
+}
+
+// Kiểm tra nếu nút 'remove' được nhấn
+if (isset($_POST['remove'])) {
+    // Lấy chỉ mục của mục cần xóa
+    $index = $_POST['index'];
+    // Xóa mục khỏi biến phiên 'cart'
+    unset($_SESSION['cart'][$index]);
+    // Đặt lại các khóa mảng để duy trì tính liên tục
+    $_SESSION['cart'] = array_values($_SESSION['cart']);
+
+    // Trở về trang giỏ hàng sau khi xóa mục
+    header("Location: cart.php");
+    exit();
+}
+
+// Kiểm tra nếu nút 'update' được nhấn
+if (isset($_POST['update'])) {
+    // Lấy chỉ mục của mục cần cập nhật
+    $index = $_POST['index'];
+    // Cập nhật số lượng của mục trong giỏ hàng
+    $quantity = $_POST['quantity'];
+    if ($quantity > 0 && $quantity <= 10) {
+        $_SESSION['cart'][$index]['SoLuong'] = $quantity;
+    } else {
+        // Nếu số lượng không hợp lệ, bạn có thể xử lý nó tương ứng.
+        // Ví dụ, bạn có thể đặt một số lượng mặc định hoặc xóa mục khỏi giỏ hàng.
+        // Ở đây, chúng tôi sẽ xóa mục vì tính đơn giản.
+        unset($_SESSION['cart'][$index]);
+        $_SESSION['cart'] = array_values($_SESSION['cart']);
+    }
+
+    // Trở về trang giỏ hàng sau khi cập nhật số lượng
+    header("Location: cart.php");
+    exit();
+}
+// Kiểm tra nếu nút 'checkout' được nhấn
+if (isset($_POST['checkout'])) {
+    // Tính tổng số tiền trong giỏ hàng
+    $total = 0;
+    foreach ($_SESSION['cart'] as $item) {
+        $total += $item['GiaSP'] * $item['SoLuong'];
+    }
+
+    // Lưu thông tin về hóa đơn tổng vào biến phiên để chuyển sang trang checkout.php
+    $_SESSION['total'] = $total;
+
+    // Chuyển hướng người dùng sang trang checkout.php
+    header("Location: checkout.php");
+    exit();
+}
+
+// Hiển thị các mục trong giỏ hàng
+foreach ($_SESSION['cart'] as $index => $item) {
+    echo "<div>";
+    if (isset($item['HinhAnh'])) {
+        echo "<img src='./img/" . htmlspecialchars($item['HinhAnh']) . "' alt='" . htmlspecialchars($item['TenSP']) . "'>";
+    } else {
+        echo "<p>Ảnh không có sẵn</p>";
+    }
+    if (isset($item['TenSP'])) {
+        echo "<h3>" . htmlspecialchars($item['TenSP']) . "</h3>";
+    } else {
+        echo "<p>Tên sản phẩm không có sẵn</p>";
+    }
+    if (isset($item['GiaSP'])) {
+        echo "<p>Giá: " . htmlspecialchars($item['GiaSP']) . "</p>";
+    } else {
+        echo "<p>Giá không có sẵn</p>";
+    }
+    // Biểu mẫu để điều chỉnh số lượng và xóa mục
+    echo "<form method='POST'>";
+    echo "<input type='hidden' name='index' value='$index'>";
+    if (isset($item['SoLuong'])) {
+        echo "Số lượng: <input type='number' name='quantity' value='" . htmlspecialchars($item['SoLuong']) . "' min='1' max='10'>      "; // Trường nhập số lượng
+    } else {
+        echo "<p>Số lượng không có sẵn</p>";
+    }
+    echo "<button type='submit' name='update'>Cập nhật</button>"; // Nút Cập nhật
+    echo "<br>"; // Thêm xuống hàng ở đây
+    echo "Xóa sản phẩm: <button type='submit' name='remove'>Xóa</button>"; // Nút Xóa
+    echo "</form>";
+    echo "</div>";
+}
+
+// Hiển thị nút "Thanh toán"
+echo "<form method='POST'>";
+echo "<button type='submit' name='checkout'>Thanh toán</button>";
+echo "</form>";
+?>

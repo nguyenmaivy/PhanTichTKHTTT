@@ -1,200 +1,77 @@
-<!-- Page Header Start -->
-<div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Thanh toán</h1>
-            <div class="d-inline-flex">
-                <p class="m-0"><a href="">Trang chủ</a></p>
-                <p class="m-0 px-2">-</p>
-                <p class="m-0">Thanh toán</p>
-            </div>
-        </div>
-    </div>
-    <!-- Page Header End -->
+<?php
+session_start(); // Bắt đầu phiên làm việc nếu chưa được bắt đầu
 
+// Kiểm tra xem biến phiên 'total' và 'cart' tồn tại hay không
+if (isset($_SESSION['total']) && isset($_SESSION['cart'])) {
+    $total = $_SESSION['total'];
+    $totalQuantity = 0; // Khởi tạo tổng số lượng sản phẩm
 
-    <!-- Checkout Start -->
-    <div class="container-fluid pt-5">
-        <div class="row px-xl-5">
-            <div class="col-lg-8">
-                <div class="mb-4">
-                    <h4 class="font-weight-semi-bold mb-4">Thanh toán</h4>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Tên </label>
-                            <input class="form-control" type="text" placeholder="John">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Họ</label>
-                            <input class="form-control" type="text" placeholder="Doe">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Số điện thoại</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Địa chỉ</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Quốc gia</label>
-                            <select class="custom-select">
-                                <option selected>United States</option>
-                                <option>Afghanistan</option>
-                                <option>Albania</option>
-                                <option>Algeria</option>
-                                <option>VietNam</option>
-                                <option>Korea</option>
-                                <option>Germany</option>
-                                <option>Thailand</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Công việc</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Địa chỉ hiện tại</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>ZIP Code</label>
-                            <input class="form-control" type="text" placeholder="123">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="newaccount">
-                                <label class="custom-control-label" for="newaccount">Tạo tài khoản</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="shipto">
-                                <label class="custom-control-label" for="shipto" data-toggle="collapse"
-                                    data-target="#shipping-address">Gửi đến địa chỉ khác</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="collapse mb-4" id="shipping-address">
-                    <h4 class="font-weight-semi-bold mb-4">Địa chỉ giao hàng</h4>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label>Tên</label>
-                            <input class="form-control" type="text" placeholder="John">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Họ</label>
-                            <input class="form-control" type="text" placeholder="Doe">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Số điện thoại</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Địa chỉ</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Quốc gia</label>
-                            <select class="custom-select">
-                                <option selected>United States</option>
-                                <option>Afghanistan</option>
-                                <option>Albania</option>
-                                <option>Algeria</option>
-                                <option>VietNam</option>
-                                <option>Korea</option>
-                                <option>Germany</option>
-                                <option>Thailand</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Công việc</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>Địa chỉ hiện tại</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>ZIP Code</label>
-                            <input class="form-control" type="text" placeholder="123">
-                        </div>
-                    </div>
-                </div>
+    // Xử lý việc lưu thông tin hóa đơn vào cơ sở dữ liệu hoặc bất kỳ xử lý nào khác ở đây
+
+    // Hiển thị các sản phẩm đã được thanh toán
+?>
+    <div>
+        <h3>Các sản phẩm đã được thanh toán:</h3>
+<?php
+        foreach ($_SESSION['cart'] as $item) {
+            // Tính tổng số lượng sản phẩm
+            $totalQuantity += $item['SoLuong'];
+?>
+            <div>
+                <?php if (isset($item['HinhAnh'])): ?>
+                    <img src='./img/<?php echo htmlspecialchars($item['HinhAnh']); ?>' alt='<?php echo htmlspecialchars($item['TenSP']); ?>'>
+                <?php else: ?>
+                    <p>Ảnh không có sẵn</p>
+                <?php endif; ?>
+                <?php if (isset($item['TenSP'])): ?>
+                    <h3><?php echo htmlspecialchars($item['TenSP']); ?></h3>
+                <?php else: ?>
+                    <p>Tên sản phẩm không có sẵn</p>
+                <?php endif; ?>
+                <?php if (isset($item['GiaSP'])): ?>
+                    <p>Giá: <?php echo htmlspecialchars($item['GiaSP']); ?></p>
+                <?php else: ?>
+                    <p>Giá không có sẵn</p>
+                <?php endif; ?>
+                <?php if (isset($item['SoLuong'])): ?>
+                    <p>Số lượng: <?php echo htmlspecialchars($item['SoLuong']); ?></p>
+                <?php else: ?>
+                    <p>Số lượng không có sẵn</p>
+                <?php endif; ?>
             </div>
-            <div class="col-lg-4">
-                <div class="card border-secondary mb-5">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Tổng đơn hàng</h4>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="font-weight-medium mb-3">Sản phẩm</h5>
-                        <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 1</p>
-                            <p>150</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 2</p>
-                            <p>150</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Colorful Stylish Shirt 3</p>
-                            <p>150</p>
-                        </div>
-                        <hr class="mt-0">
-                        <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Tổng tiền sản phẩm</h6>
-                            <h6 class="font-weight-medium">150</h6>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Phí vận chuyển</h6>
-                            <h6 class="font-weight-medium">10</h6>
-                        </div>
-                    </div>
-                    <div class="card-footer border-secondary bg-transparent">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5 class="font-weight-bold">Tổng đơn hàng</h5>
-                            <h5 class="font-weight-bold">160</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border-secondary mb-5">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Thanh toán</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Thanh toán qua ngân hàng</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Thanh toán khi nhận hàng</label>
-                            </div>
-                        </div>
-                        <!-- <div class="">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="card-footer border-secondary bg-transparent">
-                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Đặt đơn hàng</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<?php
+        }
+?>
     </div>
-    <!-- Checkout End -->
+<?php
+    // Hiển thị thông báo cho người dùng về việc thanh toán đã được xác nhận và tổng số lượng sản phẩm
+    echo "<h2>Thanh toán đã được xác nhận!</h2>";
+    echo "<p>Tổng hóa đơn của bạn là: $total</p>";
+    echo "<p>Tổng số lượng sản phẩm: $totalQuantity</p>";
+
+    // Thêm nút "Áp mã giảm giá" và "Thanh toán và giao hàng"
+?>
+    <div>
+        <button onclick="applyCoupon()">Áp mã giảm giá</button>
+        <button onclick="checkout()">Thanh toán và giao hàng</button>
+    </div>
+    <script>
+        function applyCoupon() {
+            // Viết mã JavaScript để xử lý việc áp mã giảm giá
+        }
+
+        function checkout() {
+            // Viết mã JavaScript để xử lý việc thanh toán và giao hàng
+            window.location.href = "checkout.php";
+        }
+    </script>
+<?php
+    // Sau khi xử lý thanh toán, bạn có thể xóa biến phiên 'total'
+    unset($_SESSION['total']);
+} else {
+    // Nếu biến phiên 'total' hoặc 'cart' không tồn tại, có thể có sự truy cập trái phép đến trang này
+    // Bạn có thể chuyển hướng người dùng đến trang chính hoặc trang nơi họ có thể tiếp tục mua sắm
+    header("Location: shop.php");
+    exit();
+}
+?>
